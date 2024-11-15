@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="/Dashboard1/">
+    <file alias="Constants.qml">/home/inno/project-qt/Dashboard1/imports/Dashboard1/Constants.qml</file>
+    <file alias="DirectoryFontLoader.qml">/home/inno/project-qt/Dashboard1/imports/Dashboard1/DirectoryFontLoader.qml</file>
+    <file alias="EventListModel.qml">/home/inno/project-qt/Dashboard1/imports/Dashboard1/EventListModel.qml</file>
+    <file alias="EventListSimulator.qml">/home/inno/project-qt/Dashboard1/imports/Dashboard1/EventListSimulator.qml</file>
+  </qresource>
+</RCC>
+

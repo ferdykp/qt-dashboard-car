@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/Main">
+    <file alias="qmldir">/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml/Main/qmldir</file>
+  </qresource>
+</RCC>
+

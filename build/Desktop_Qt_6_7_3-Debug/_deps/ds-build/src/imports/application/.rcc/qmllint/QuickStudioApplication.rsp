@@ -1,0 +1,9 @@
+--bare
+-I
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml
+-I
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml
+-I
+/home/inno/Qt/6.7.3/gcc_64/qml
+--resource
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/_deps/ds-build/src/imports/application/.qt/rcc/qmake_QtQuick_Studio_Application.qrc

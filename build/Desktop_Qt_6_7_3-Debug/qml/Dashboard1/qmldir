@@ -1,0 +1,11 @@
+module Dashboard1
+linktarget Dashboard1plugin
+optional plugin Dashboard1plugin
+classname Dashboard1Plugin
+typeinfo Dashboard1.qmltypes
+prefer :/Dashboard1/
+singleton Constants 1.0 Constants.qml
+DirectoryFontLoader 1.0 DirectoryFontLoader.qml
+EventListModel 1.0 EventListModel.qml
+EventListSimulator 1.0 EventListSimulator.qml
+

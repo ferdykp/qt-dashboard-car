@@ -1,0 +1,14 @@
+--bare
+-I
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml
+-I
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml
+-I
+/home/inno/Qt/6.7.3/gcc_64/qml
+--resource
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/_deps/ds-build/src/imports/multitext/.qt/rcc/qmake_QtQuick_Studio_MultiText.qrc
+--resource
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/_deps/ds-build/src/imports/multitext/.qt/rcc/QuickStudioMultiText_raw_qml_0.qrc
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/_deps/ds-src/src/imports/multitext/MultiTextElement.qml
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/_deps/ds-src/src/imports/multitext/MultiTextItem.qml
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/_deps/ds-src/src/imports/multitext/MultiTextException.qml

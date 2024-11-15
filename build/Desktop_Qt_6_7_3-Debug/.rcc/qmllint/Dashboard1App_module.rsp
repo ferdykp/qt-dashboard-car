@@ -1,0 +1,14 @@
+-I
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug
+-I
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml
+-I
+/home/inno/Qt/6.7.3/gcc_64/qml
+--resource
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/.qt/rcc/configuration.qrc
+--resource
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/.qt/rcc/qmake_Main.qrc
+--resource
+/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/.qt/rcc/Dashboard1App_raw_qml_0.qrc
+--module
+Main

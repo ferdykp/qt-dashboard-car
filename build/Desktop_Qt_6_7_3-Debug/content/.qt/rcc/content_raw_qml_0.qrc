@@ -1,0 +1,16 @@
+<RCC>
+  <qresource prefix="/content/">
+    <file alias="app/App.qml">/home/inno/project-qt/Dashboard1/content/app/App.qml</file>
+    <file alias="ui/Screen01.ui.qml">/home/inno/project-qt/Dashboard1/content/ui/Screen01.ui.qml</file>
+    <file alias="fonts/fonts.txt">/home/inno/project-qt/Dashboard1/content/fonts/fonts.txt</file>
+    <file alias="assets/menu.png">/home/inno/project-qt/Dashboard1/content/assets/menu.png</file>
+    <file alias="assets/home.png">/home/inno/project-qt/Dashboard1/content/assets/home.png</file>
+    <file alias="assets/notif.png">/home/inno/project-qt/Dashboard1/content/assets/notif.png</file>
+    <file alias="assets/Section3_1.png">/home/inno/project-qt/Dashboard1/content/assets/Section3_1.png</file>
+    <file alias="assets/Section3_2.png">/home/inno/project-qt/Dashboard1/content/assets/Section3_2.png</file>
+    <file alias="assets/Section3_3.png">/home/inno/project-qt/Dashboard1/content/assets/Section3_3.png</file>
+    <file alias="assets/setting.png">/home/inno/project-qt/Dashboard1/content/assets/setting.png</file>
+    <file alias="assets/needle.png">/home/inno/project-qt/Dashboard1/content/assets/needle.png</file>
+  </qresource>
+</RCC>
+

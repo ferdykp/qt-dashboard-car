@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/QtQuick/Studio/EventSimulator">/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml/QtQuick/Studio/EventSimulator</file>
+
+  </qresource>
+</RCC>

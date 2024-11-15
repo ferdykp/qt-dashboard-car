@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/FlowView">/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml/FlowView</file>
+
+  </qresource>
+</RCC>
