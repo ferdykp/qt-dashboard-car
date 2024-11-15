@@ -1212,3 +1212,13 @@
 135	2447	1731577549358825389	content/CMakeFiles/content.dir/.rcc/qmlcache/content_app/App_qml.cpp.o	a1f50d29796ca32d
 2447	2487	1731577551670843206	content/libcontent.a	ff97374cfafb1b0b
 2488	3578	1731577551711843522	Dashboard1App	5d77e08d2435ed19
+44	49	1731639515157596715	qml/content/app/App.qml	be9d41e5222fbf72
+44	49	1731639515157596715	/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml/content/app/App.qml	be9d41e5222fbf72
+49	104	1731639515211597099	content/.qt/rcc/qrc_content_raw_qml_0.cpp	cd5f6531e7ebf00d
+49	104	1731639515211597099	/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/content/.qt/rcc/qrc_content_raw_qml_0.cpp	cd5f6531e7ebf00d
+49	152	1731639515250597377	content/.rcc/qmlcache/content_app/App_qml.cpp	2564eda2d97bd6ef
+49	152	1731639515250597377	/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/content/.rcc/qmlcache/content_app/App_qml.cpp	2564eda2d97bd6ef
+153	778	1731639515262597462	content/CMakeFiles/content.dir/.qt/rcc/qrc_content_raw_qml_0.cpp.o	313cbae6acd0a1c0
+152	2456	1731639515261597455	content/CMakeFiles/content.dir/.rcc/qmlcache/content_app/App_qml.cpp.o	a1f50d29796ca32d
+2456	2497	1731639517565613846	content/libcontent.a	ff97374cfafb1b0b
+2497	3602	1731639517606614137	Dashboard1App	5d77e08d2435ed19

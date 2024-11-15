@@ -22,7 +22,7 @@ Window {
 
         // Aksi ketika tombol Home diklik
         buttonHome.onClicked: {
-            mainScreen.color = "blue"
+            mainScreen.color = "lightblue"
             console.log("Changed")
         }
     }
