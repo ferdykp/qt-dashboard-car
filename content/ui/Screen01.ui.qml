@@ -18,12 +18,13 @@ Rectangle {
     color: "#1d1b1b"
 
     property alias buttonHome: buttonHome
+    property alias buttonSwitch: buttonSwitch
+    property alias parking: parking
+    property alias reverse: reverse
     property alias rectangle3: rectangle3
-    property alias speed: speedText.text
-    // property alias circularLedContainer:circularLedContainer.text
-    // property alias speed: _text.text
-    // property alias needleRotation: needle.rotation
-
+    property alias speedText: speedText
+    property alias ledArc: ledArc
+    property alias car: car
 
     Text {
         id: label
@@ -85,76 +86,173 @@ Rectangle {
         enabled: false
 
         // Tampilan teks untuk nilai speed
+        // Text {
+        //     id: speedText
+        //     anchors.horizontalCenter: parent.horizontalCenter
+        //     anchors.top: parent.top
+        //     anchors.topMargin: 427
+        //     color: "#ffffff"
+        //     text: "0"
+        //     font.pixelSize: 40
+        //     anchors.horizontalCenterOffset: -1
+        // }
+
+        // LED Progress Bar dengan Rectangle sebagai segmen LED
+        // Row {
+        //     id: ledRow
+        //     anchors.horizontalCenter: parent.horizontalCenter
+        //     anchors.top: speedText.bottom
+        //     anchors.topMargin: 10
+        //     spacing: 5
+
+        //     Repeater {
+        //         model: rectangle.numLeds
+        //         Rectangle {
+        //             width: 20
+        //             height: 50
+        //             radius: 50
+
+        //             // Warna dan opasitas LED berubah sesuai nilai speed
+        //             // color: Qt.rgba(1 - index / rectangle.numLeds, index / rectangle.numLeds, 0, 1)
+        //             color: "#00BFFF"
+        //             opacity: index < Math.floor(
+        //                          (rectangle.currentSpeed / 180) * rectangle.numLeds) ? 1 : 0.3
+        //         }
+        //     }
+        // }
+
+        // Canvas for LED Arc (Only declaration, no logic here)
+        Canvas {
+            id: ledArc
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: speedText.bottom
+            anchors.horizontalCenterOffset: -1
+            anchors.topMargin: -41
+            width: 300
+            height: 150
+        }
+
+        // Speed Text Display
+        Text {
+            id: speedText
+            y: 340
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: ledArc.bottom
+            anchors.topMargin: 0
+            // text: mainScreen.currentSpeed + " MpH"
+            text: "0"
+            font.pixelSize: 30
+            anchors.horizontalCenterOffset: -1
+            color: "#FFFFFF"
+        }
+
+        Rectangle {
+            id: indikator
+            x: 8
+            y: 35
+            width: 399
+            height: 65
+            color: "#313237"
+            radius: 20
+
+            Rectangle {
+                id: parking
+                x: 20
+                y: 11
+                width: 71
+                height: 46
+                color: "#313237"
+                radius: 15
+
                 Text {
-                    id: speedText
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.top: parent.top
-                    anchors.topMargin: 283
+                    id: indparking
+                    x: 29
+                    y: 9
                     color: "#ffffff"
-                    text: "0"
-                    font.pixelSize: 40
-                    anchors.horizontalCenterOffset: -29
+                    text: qsTr("P")
+                    font.pixelSize: 21
                 }
+            }
 
-                // LED Progress Bar dengan Rectangle sebagai segmen LED
-                Row {
-                    id: ledRow
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.top: speedText.bottom
-                    anchors.topMargin: 10
-                    spacing: 5
-
-                    Repeater {
-                        model: rectangle.numLeds
-                        Rectangle {
-                            width: 20
-                            height: 50
-                            radius: 50
-
-                            // Warna dan opasitas LED berubah sesuai nilai speed
-                            // color: Qt.rgba(1 - index / rectangle.numLeds, index / rectangle.numLeds, 0, 1)
-                            color: "#00BFFF"
-                            opacity: index < Math.floor((rectangle.currentSpeed / 180) * rectangle.numLeds) ? 1 : 0.3
-                        }
-                    }
-                }
+            Rectangle {
+                id: reverse
+                x: 115
+                y: 11
+                width: 71
+                height: 46
+                color: "#313237"
+                radius: 15
 
                 Text {
-                    id: text1
-                    x: 215
-                    y: 299
-                    width: 61
-                    height: 39
+                    id: indreverse
+                    x: 29
+                    y: 9
                     color: "#ffffff"
-                    text: qsTr("MpH")
-                    font.pixelSize: 25
+                    text: qsTr("R")
+                    font.pixelSize: 21
                 }
-                // LED Progress Bar dalam bentuk lingkaran untuk indikator persentase
-                    Item {
-                        id: circularLedContainer
-                        width: 300
-                        height: 300
-                        anchors.centerIn: parent
+            }
 
-                        Repeater {
-                            model: mainContainer.numLeds1
-                            Rectangle {
-                                width: 20
-                                height: 20
-                                radius: 10
-                                color: index < Math.floor((mainContainer.percent / 100) * mainContainer.numLeds) ? "#00BFFF" : "#555555"
-                                opacity: 1
+            Rectangle {
+                id: netral
+                x: 210
+                y: 11
+                width: 71
+                height: 46
+                color: "#313237"
+                radius: 15
 
-                                // Menyusun LED dalam pola lingkaran
-                                transform: Translate {
-                                    x: (circularLedContainer.width / 2) * Math.cos(2 * Math.PI * index / mainContainer.numLeds1)
-                                    y: (circularLedContainer.height / 2) * Math.sin(2 * Math.PI * index / mainContainer.numLeds1)
-                                }
-                            }
-                        }
-                    }
-}
+                Text {
+                    id: indnetral
+                    x: 28
+                    y: 9
+                    color: "#ffffff"
+                    text: qsTr("N")
+                    font.pixelSize: 21
+                }
+            }
 
+            Rectangle {
+                id: push
+                x: 310
+                y: 11
+                width: 71
+                height: 46
+                color: "#313237"
+                radius: 15
+
+                Text {
+                    id: indpush
+                    x: 28
+                    y: 9
+                    color: "#ffffff"
+                    text: qsTr("D")
+                    font.pixelSize: 21
+                }
+            }
+        }
+
+        Image {
+            id: car
+            x: 50
+            y: 137
+            width: 315
+            height: 180
+            source: "../assets/car.png"
+            fillMode: Image.PreserveAspectFit
+            rotation: 0 // Properti rotasi, mulai dari 0 derajat
+        }
+
+        Rectangle {
+            id: rectangle6
+            x: 34
+            y: 514
+            width: 90
+            height: 83
+            color: "#ffffff"
+            radius: 58
+        }
+    }
 
     Rectangle {
         id: rectangle4
@@ -262,6 +360,13 @@ Rectangle {
         height: 42
         source: "../assets/setting.png"
         fillMode: Image.PreserveAspectFit
+    }
+
+    Button {
+        id: buttonSwitch
+        x: 972
+        y: 727
+        text: qsTr("Button")
     }
 
     states: [

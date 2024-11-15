@@ -11,6 +11,7 @@
     <file alias="assets/Section3_3.png">/home/inno/project-qt/Dashboard1/content/assets/Section3_3.png</file>
     <file alias="assets/setting.png">/home/inno/project-qt/Dashboard1/content/assets/setting.png</file>
     <file alias="assets/needle.png">/home/inno/project-qt/Dashboard1/content/assets/needle.png</file>
+    <file alias="assets/car.png">/home/inno/project-qt/Dashboard1/content/assets/car.png</file>
   </qresource>
 </RCC>
 
