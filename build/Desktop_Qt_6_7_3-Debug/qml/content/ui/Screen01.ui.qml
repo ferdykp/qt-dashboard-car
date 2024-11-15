@@ -24,7 +24,7 @@ Rectangle {
     property alias rectangle3: rectangle3
     property alias speedText: speedText
     property alias ledArc: ledArc
-    property alias car:car
+    property alias car: car
 
     Text {
         id: label
@@ -241,6 +241,16 @@ Rectangle {
             source: "../assets/car.png"
             fillMode: Image.PreserveAspectFit
             rotation: 0 // Properti rotasi, mulai dari 0 derajat
+        }
+
+        Rectangle {
+            id: rectangle6
+            x: 34
+            y: 514
+            width: 90
+            height: 83
+            color: "#ffffff"
+            radius: 58
         }
     }
 

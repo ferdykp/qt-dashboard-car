@@ -62,7 +62,7 @@ Window {
                     ctx.beginPath();
                     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
                     ctx.strokeStyle = i < activeSegments ? "#00BFFF" : "#555555";
-                    ctx.lineWidth = 8;
+                    ctx.lineWidth = 25;
                     ctx.stroke();
                 }
             }
