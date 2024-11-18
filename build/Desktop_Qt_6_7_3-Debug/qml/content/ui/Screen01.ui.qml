@@ -17,14 +17,15 @@ Rectangle {
     height: Constants.height
     color: "#1d1b1b"
 
-    property alias buttonHome: buttonHome
     property alias buttonSwitch: buttonSwitch
     property alias parking: parking
     property alias reverse: reverse
     property alias rectangle3: rectangle3
     property alias speedText: speedText
+    property alias fuelText: fuelText
+    property alias ledRow: ledRow
     property alias ledArc: ledArc
-    property alias car: car
+    property alias progressText: progressText
 
     Text {
         id: label
@@ -55,110 +56,98 @@ Rectangle {
     }
 
     Rectangle {
-        id: rectangle1
-        x: 8
-        y: 75
-        width: 415
-        height: 620
-        color: "#4b4747"
-        radius: 10
-        border.width: 1
-    }
-
-    Rectangle {
-        id: rectangle2
-        x: 433
-        y: 75
-        width: 415
-        height: 200
-        color: "#4b4747"
-        radius: 10
-    }
-
-    Rectangle {
         id: rectangle3
-        x: 857
-        y: 75
-        width: 415
+        x: 39
+        y: 67
+        width: 1203
         height: 620
         color: "#484343"
         radius: 10
         enabled: false
 
         // Tampilan teks untuk nilai speed
-        // Text {
-        //     id: speedText
-        //     anchors.horizontalCenter: parent.horizontalCenter
-        //     anchors.top: parent.top
-        //     anchors.topMargin: 427
-        //     color: "#ffffff"
-        //     text: "0"
-        //     font.pixelSize: 40
-        //     anchors.horizontalCenterOffset: -1
-        // }
+        Text {
+            id: fuelText
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: 495
+            color: "#ffffff"
+            text: "0"
+            font.pixelSize: 40
+            anchors.horizontalCenterOffset: 75
+        }
 
         // LED Progress Bar dengan Rectangle sebagai segmen LED
-        // Row {
-        //     id: ledRow
-        //     anchors.horizontalCenter: parent.horizontalCenter
-        //     anchors.top: speedText.bottom
-        //     anchors.topMargin: 10
-        //     spacing: 5
+        Row {
+            id: ledRow
+            width: 291
+            height: 63
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: speedText.bottom
+            anchors.horizontalCenterOffset: -1
+            anchors.topMargin: 202
+            spacing: 5
 
-        //     Repeater {
-        //         model: rectangle.numLeds
-        //         Rectangle {
-        //             width: 20
-        //             height: 50
-        //             radius: 50
+            Repeater {
+                model: rectangle.fuelLeds
+                Rectangle {
+                    width: 40
+                    height: 50
+                    radius: 10
 
-        //             // Warna dan opasitas LED berubah sesuai nilai speed
-        //             // color: Qt.rgba(1 - index / rectangle.numLeds, index / rectangle.numLeds, 0, 1)
-        //             color: "#00BFFF"
-        //             opacity: index < Math.floor(
-        //                          (rectangle.currentSpeed / 180) * rectangle.numLeds) ? 1 : 0.3
-        //         }
-        //     }
-        // }
+                    // Warna dan opasitas LED berubah sesuai nilai speed
+                    // color: Qt.rgba(1 - index / rectangle.numLeds, index / rectangle.numLeds, 0, 1)
+                    color: "#00BFFF"
+                    opacity: index < Math.floor(
+                                 (rectangle.currentFuels / 180) * rectangle.fuelLeds) ? 1 : 0.3
+                }
+            }
+        }
 
         // Canvas for LED Arc (Only declaration, no logic here)
         Canvas {
             id: ledArc
+            y: 47
+            anchors.centerIn: parent
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: speedText.bottom
-            anchors.horizontalCenterOffset: -1
+            z: 0
+            anchors.verticalCenterOffset: -35
+            anchors.horizontalCenterOffset: 0
             anchors.topMargin: -41
-            width: 300
-            height: 150
+            width: 455
+            height: 250
         }
 
         // Speed Text Display
         Text {
             id: speedText
-            y: 340
+            y: 263
+            anchors.centerIn: parent
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: ledArc.bottom
             anchors.topMargin: 0
             // text: mainScreen.currentSpeed + " MpH"
             text: "0"
             font.pixelSize: 30
-            anchors.horizontalCenterOffset: -1
+            anchors.verticalCenterOffset: 17
+            anchors.horizontalCenterOffset: 0
             color: "#FFFFFF"
         }
 
         Rectangle {
             id: indikator
-            x: 8
-            y: 35
-            width: 399
+            x: 371
+            y: 413
+            width: 460
             height: 65
             color: "#313237"
             radius: 20
 
             Rectangle {
                 id: parking
-                x: 20
-                y: 11
+                x: 34
+                y: 8
                 width: 71
                 height: 46
                 color: "#313237"
@@ -176,8 +165,8 @@ Rectangle {
 
             Rectangle {
                 id: reverse
-                x: 115
-                y: 11
+                x: 142
+                y: 8
                 width: 71
                 height: 46
                 color: "#313237"
@@ -195,8 +184,8 @@ Rectangle {
 
             Rectangle {
                 id: netral
-                x: 210
-                y: 11
+                x: 250
+                y: 8
                 width: 71
                 height: 46
                 color: "#313237"
@@ -214,8 +203,8 @@ Rectangle {
 
             Rectangle {
                 id: push
-                x: 310
-                y: 11
+                x: 358
+                y: 8
                 width: 71
                 height: 46
                 color: "#313237"
@@ -232,134 +221,28 @@ Rectangle {
             }
         }
 
-        Image {
-            id: car
-            x: 50
-            y: 137
-            width: 315
-            height: 180
-            source: "../assets/car.png"
-            fillMode: Image.PreserveAspectFit
-            rotation: 0 // Properti rotasi, mulai dari 0 derajat
-        }
-
         Rectangle {
-            id: rectangle6
-            x: 34
-            y: 514
-            width: 90
-            height: 83
-            color: "#ffffff"
-            radius: 58
+            id: roundedRect
+            anchors.centerIn: parent
+            width: 78
+            height: 80
+            radius: 20
+            color: "#444"
+            border.color: "#666"
+            border.width: 2
+            anchors.verticalCenterOffset: 262
+            anchors.horizontalCenterOffset: -243
+
+            // Teks untuk menampilkan persentase progres
+            Text {
+                id: progressText
+                anchors.centerIn: parent
+                // text: mainScreen.percentage + " %"
+                text: "0"
+                font.pixelSize: 24
+                color: "#FFFFFF"
+            }
         }
-    }
-
-    Rectangle {
-        id: rectangle4
-        x: 433
-        y: 285
-        width: 415
-        height: 200
-        color: "#4b4747"
-        radius: 10
-    }
-
-    Rectangle {
-        id: rectangle5
-        x: 433
-        y: 495
-        width: 415
-        height: 200
-        color: "#4b4747"
-        radius: 10
-    }
-
-    RoundButton {
-        id: buttonHome
-        x: 302
-        y: 718
-        width: 59
-        height: 56
-        background: Rectangle {
-            color: "white"
-            radius: 50
-        }
-
-        Image {
-            id: _109588
-            x: 0
-            y: 6
-            width: 59
-            height: 42
-            source: "../assets/home.png"
-            fillMode: Image.PreserveAspectFit
-        }
-    }
-
-    RoundButton {
-        id: buttonMenu
-        x: 470
-        y: 718
-        width: 59
-        height: 56
-        background: Rectangle {
-            color: "#ffffff"
-            radius: 28
-        }
-
-        Image {
-            id: pngtreemenuiconpngimage_4419509removebgpreview
-            x: 0
-            y: 8
-            width: 59
-            height: 42
-            source: "../assets/menu.png"
-            fillMode: Image.PreserveAspectFit
-        }
-    }
-
-    RoundButton {
-        id: buttonNotif
-        x: 636
-        y: 718
-        width: 59
-        height: 56
-        background: Rectangle {
-            color: "#ffffff"
-            radius: 28
-        }
-
-        Image {
-            id: calliconvectortelephoneiconvectorphoneiconvectorcontactus2R2PT6Rremovebgpreview
-            x: -6
-            y: 1
-            width: 70
-            height: 55
-            source: "../assets/notif.png"
-            fillMode: Image.PreserveAspectFit
-        }
-    }
-
-    RoundButton {
-        id: buttonSetting
-        x: 813
-        y: 718
-        width: 59
-        height: 56
-        background: Rectangle {
-            color: "#ffffff"
-            radius: 28
-        }
-    }
-
-    Image {
-        id: pngclipartsettingsgearicongearconfigurationthumbnailremovebgpreview
-        x: 813
-        y: 725
-        width: 59
-        height: 42
-        source: "../assets/setting.png"
-        fillMode: Image.PreserveAspectFit
     }
 
     Button {
