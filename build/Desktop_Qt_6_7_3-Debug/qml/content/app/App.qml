@@ -13,9 +13,9 @@ Window {
         id: mainScreen
 
         // Properti yang mewakili data untuk antarmuka
-        property int speedLeds: 50
+        property int speedLeds: 91
         property int currentSpeed: 0
-        property int fuelLeds: 6
+        property int fuelLeds: 8
         property int currentFuels: 0
         property int maxFuels: 100
         property int percent: 0
@@ -33,14 +33,14 @@ Window {
         // Aksi untuk tombol Switch
         buttonSwitch.onClicked: {
             mainScreen.parking.color = "maroon"
-            mainScreen.reverse.color = "maroon"
+            mainScreen.reverse.color = "blue"
             console.log("Changed Switch Button")
         }
 
         // Function to update speed and trigger repaint
                 function updateSpeed(newSpeed) {
                     mainScreen.currentSpeed = newSpeed;
-                    speedText.text = newSpeed + " MpH"; // Update speed text
+                    speedText.text = newSpeed + "\n KM/H"; // Update speed text
                     ledArc.requestPaint();  // Trigger the repaint of the Canvas (LED)
                 }
 
@@ -74,10 +74,13 @@ Window {
                     let startAngle = Math.PI + i * segmentAngle;
                     let endAngle = startAngle + segmentAngle * 0.8;
 
+                    // Tentukan panjang LED berdasarkan apakah kelipatan 5
+                    let lineWidth = i % 5 === 0 ? 70 : 50; // LED pada kelipatan 5 lebih panjang
+
                     ctx.beginPath();
                     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
                     ctx.strokeStyle = i < activeSegments ? "#00BFFF" : "#555555";
-                    ctx.lineWidth = 50;
+                    ctx.lineWidth = lineWidth;
                     ctx.stroke();
                 }
             }

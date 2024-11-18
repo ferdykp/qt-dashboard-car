@@ -19,4 +19,5 @@ qt6_add_qml_module(content
         assets/setting.png
         assets/needle.png
         assets/car.png
+        assets/fuel.png
 )

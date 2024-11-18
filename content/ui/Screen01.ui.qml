@@ -66,43 +66,8 @@ Rectangle {
         enabled: false
 
         // Tampilan teks untuk nilai speed
-        Text {
-            id: fuelText
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.top
-            anchors.topMargin: 495
-            color: "#ffffff"
-            text: "0"
-            font.pixelSize: 40
-            anchors.horizontalCenterOffset: 75
-        }
 
         // LED Progress Bar dengan Rectangle sebagai segmen LED
-        Row {
-            id: ledRow
-            width: 291
-            height: 63
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: speedText.bottom
-            anchors.horizontalCenterOffset: -1
-            anchors.topMargin: 202
-            spacing: 5
-
-            Repeater {
-                model: rectangle.fuelLeds
-                Rectangle {
-                    width: 40
-                    height: 50
-                    radius: 10
-
-                    // Warna dan opasitas LED berubah sesuai nilai speed
-                    // color: Qt.rgba(1 - index / rectangle.numLeds, index / rectangle.numLeds, 0, 1)
-                    color: "#00BFFF"
-                    opacity: index < Math.floor(
-                                 (rectangle.currentFuels / 180) * rectangle.fuelLeds) ? 1 : 0.3
-                }
-            }
-        }
 
         // Canvas for LED Arc (Only declaration, no logic here)
         Canvas {
@@ -112,9 +77,9 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: speedText.bottom
             z: 0
-            anchors.verticalCenterOffset: -35
-            anchors.horizontalCenterOffset: 0
-            anchors.topMargin: -41
+            anchors.verticalCenterOffset: -101
+            anchors.horizontalCenterOffset: -1
+            anchors.topMargin: -107
             width: 455
             height: 250
         }
@@ -126,19 +91,19 @@ Rectangle {
             anchors.centerIn: parent
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: ledArc.bottom
-            anchors.topMargin: 0
-            // text: mainScreen.currentSpeed + " MpH"
+            anchors.topMargin: -66
             text: "0"
             font.pixelSize: 30
-            anchors.verticalCenterOffset: 17
-            anchors.horizontalCenterOffset: 0
+            horizontalAlignment: Text.AlignHCenter
+            anchors.verticalCenterOffset: -49
+            anchors.horizontalCenterOffset: -1
             color: "#FFFFFF"
         }
 
         Rectangle {
             id: indikator
             x: 371
-            y: 413
+            y: 347
             width: 460
             height: 65
             color: "#313237"
@@ -241,6 +206,80 @@ Rectangle {
                 text: "0"
                 font.pixelSize: 24
                 color: "#FFFFFF"
+            }
+        }
+
+        Rectangle {
+            id: rectFuel
+            x: 418
+            y: 471
+            width: 377
+            height: 141
+            color: "#484343"
+
+            Text {
+                id: fuelText
+                x: 248
+                y: -6
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: parent.top
+                anchors.topMargin: 8
+                color: "#ffffff"
+                text: "0"
+                font.pixelSize: 40
+                anchors.horizontalCenterOffset: 106
+            }
+
+            Row {
+                id: ledRow
+                x: 37
+                y: 72
+                width: 291
+                height: 63
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: speedText.bottom
+                anchors.horizontalCenterOffset: 0
+                anchors.topMargin: 202
+                spacing: 5
+
+                Repeater {
+                    model: rectangle.fuelLeds
+                    Rectangle {
+                        width: 30
+                        height: 50
+                        radius: 10
+
+                        // Warna dan opasitas LED berubah sesuai nilai speed
+                        // color: Qt.rgba(1 - index / rectangle.numLeds, index / rectangle.numLeds, 0, 1)
+                        color: "#00BFFF"
+                        opacity: index < Math.floor(
+                                     (rectangle.currentFuels / 100) * rectangle.fuelLeds) ? 1 : 0.3
+                    }
+                }
+            }
+
+            Image {
+                id: fuel
+                x: 52
+                y: 11
+                source: "../assets/fuel.png"
+                fillMode: Image.PreserveAspectFit
+            }
+
+            Text {
+                id: text1
+                x: 133
+                y: 7
+                width: 112
+                height: 57
+                color: "#ffffff"
+                text: qsTr("Remaining Fuel")
+                elide: Text.ElideNone
+                font.pixelSize: 20
+                wrapMode: Text.WrapAnywhere
+                textFormat: Text.RichText
+                fontSizeMode: Text.Fit
+                styleColor: "#ffffff"
             }
         }
     }
