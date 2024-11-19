@@ -14,11 +14,12 @@
     <file alias="assets/car.png">/home/inno/project-qt/Dashboard1/content/assets/car.png</file>
     <file alias="assets/fuel.png">/home/inno/project-qt/Dashboard1/content/assets/fuel.png</file>
     <file alias="assets/side.png">/home/inno/project-qt/Dashboard1/content/assets/side.png</file>
-    <file alias="assets/frame.png">/home/inno/project-qt/Dashboard1/content/assets/frame.png</file>
+    <file alias="assets/framehole.png">/home/inno/project-qt/Dashboard1/content/assets/framehole.png</file>
     <file alias="assets/lamp1.png">/home/inno/project-qt/Dashboard1/content/assets/lamp1.png</file>
     <file alias="assets/lamp2.png">/home/inno/project-qt/Dashboard1/content/assets/lamp2.png</file>
     <file alias="assets/left.png">/home/inno/project-qt/Dashboard1/content/assets/left.png</file>
     <file alias="assets/right.png">/home/inno/project-qt/Dashboard1/content/assets/right.png</file>
+    <file alias="assets/linecar.png">/home/inno/project-qt/Dashboard1/content/assets/linecar.png</file>
   </qresource>
 </RCC>
 

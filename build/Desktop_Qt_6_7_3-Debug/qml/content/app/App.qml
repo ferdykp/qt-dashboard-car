@@ -13,7 +13,7 @@ Window {
         id: mainScreen
 
         // Properti yang mewakili data untuk antarmuka
-        property int speedLeds: 91
+        property int speedLeds: 90
         property int currentSpeed: 0
         property int fuelLeds: 8
         property int currentFuels: 0
@@ -21,7 +21,7 @@ Window {
         property int percent: 0
         property int maxSpeed: 180
         property real progress: 0.0 // Nilai progres (0 - 1)
-        property int batteryLevel: 80 // Level baterai default
+        property int batteryLevel: 90 // Level baterai default
 
 
 
@@ -37,7 +37,9 @@ Window {
             mainScreen.parking.color = "maroon"
             mainScreen.reverse.color = "blue"
             mainScreen.rectLeft.color = "#6ffff9"
-            // mainScreen.lamp1.color = "#6ffff9"
+            mainScreen.rectLamp1.color = "lightblue"
+            mainScreen.rectLamp2.color = "yellow"
+            mainScreen.rectRight.color = "green"
             console.log("Changed Switch Button")
         }
 
@@ -68,33 +70,49 @@ Window {
     }
 
         // Logic for Canvas Painting (JavaScript block)
-        function speedCanvas() {
-            let ctx = mainScreen.ledArc.getContext("2d");
-            ctx.clearRect(0, 0, mainScreen.ledArc.width, mainScreen.ledArc.height);
-            ctx.lineWidth = 5; // Lebar border
+    function speedCanvas() {
+        let ctx = mainScreen.ledArc.getContext("2d");
+        ctx.clearRect(0, 0, mainScreen.ledArc.width, mainScreen.ledArc.height);
 
-            let centerX = mainScreen.ledArc.width / 2;
-            let centerY = mainScreen.ledArc.height;
-            let radius = 180;
+        let centerX = mainScreen.ledArc.width / 2;
+        let centerY = mainScreen.ledArc.height;
+        let radius = 180;
 
-            let totalSegments = mainScreen.speedLeds;
-            let activeSegments = Math.floor((mainScreen.currentSpeed / mainScreen.maxSpeed) * totalSegments);
-            let segmentAngle = Math.PI / totalSegments;
+        let totalSegments = mainScreen.speedLeds; // Total LED segmen
+        let activeSegments = Math.floor((mainScreen.currentSpeed / mainScreen.maxSpeed) * totalSegments);
+        let segmentAngle = Math.PI / totalSegments;
 
-            for (let i = 0; i < totalSegments; i++) {
-                let startAngle = Math.PI + i * segmentAngle;
-                let endAngle = startAngle + segmentAngle * 0.8;
+        // Gambar segment LED
+        for (let i = 0; i < totalSegments; i++) {
+            let startAngle = Math.PI + i * segmentAngle;
+            let endAngle = startAngle + segmentAngle * 0.8;
 
-                // Tentukan panjang LED berdasarkan apakah kelipatan 5
-                let lineWidth = i % 5 === 0 ? 70 : 50; // LED pada kelipatan 5 lebih panjang
+            // Tentukan apakah ini LED besar (kelipatan 10)
+            let isMajorTick = i % 10 === 0;
+            let currentRadius = isMajorTick ? radius + 15 : radius + 20;
 
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-                ctx.strokeStyle = i < activeSegments ? "#00BFFF" : "#555555";
-                ctx.lineWidth = lineWidth;
-                ctx.stroke();
+            // Gambar LED
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, currentRadius, startAngle, endAngle);
+            ctx.strokeStyle = i < activeSegments ? "#00BFFF" : "#555555";
+            ctx.lineWidth = isMajorTick ? 30 : 20; // Lebih tebal untuk kelipatan 10
+            ctx.stroke();
+
+            // Gambar angka hanya untuk kelipatan 10
+            if (isMajorTick) {
+                let angleMid = startAngle + (endAngle - startAngle) / 2;
+                let textX = centerX + (radius - 10) * Math.cos(angleMid);
+                let textY = centerY + (radius - 10) * Math.sin(angleMid);
+
+                // Tampilkan teks angka (di bawah LED)
+                // ctx.font = "16px Arial";
+                ctx.fillStyle = "#FFFFFF";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText((i * mainScreen.maxSpeed / totalSegments).toFixed(0), textX, textY);
             }
         }
+    }
 
 
 
@@ -155,7 +173,7 @@ Window {
         repeat: true
         onTriggered: {
             mainScreen.timeText.text = Qt.formatTime(new Date(), "hh:mm:ss A");
-            mainScreen.dayText.text = Qt.formatDate(new Date(), "dddd");
+            mainScreen.dayText.text = Qt.formatDate(new Date(), "dddd |");
             mainScreen.dateText.text = Qt.formatDate(new Date(), "MMMM d, yyyy");
         }
     }

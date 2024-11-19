@@ -34,6 +34,46 @@ Rectangle {
     property alias dayText: dayText
     property alias dateText: dateText
 
+    Rectangle {
+        id: rectRight
+        x: 824
+        y: 30
+        width: 70
+        height: 55
+        color: "#302e2e"
+        radius: 15
+    }
+
+    Rectangle {
+        id: rectLamp2
+        x: 671
+        y: 30
+        width: 70
+        height: 55
+        color: "#302e2e"
+        radius: 15
+    }
+
+    Rectangle {
+        id: rectLamp1
+        x: 534
+        y: 30
+        width: 70
+        height: 55
+        color: "#302e2e"
+        radius: 15
+    }
+
+    Rectangle {
+        id: rectLeft
+        x: 384
+        y: 30
+        width: 70
+        height: 55
+        color: "#302e2e"
+        radius: 15
+    }
+
     Text {
         id: label
         text: qsTr("Hello Dashboard")
@@ -63,9 +103,11 @@ Rectangle {
     }
 
     Image {
-        id: frame
+        id: framehole
+        x: 0
+        y: 0
         width: 1280
-        source: "../assets/frame.png"
+        source: "../assets/framehole.png"
         fillMode: Image.PreserveAspectFit
 
         Button {
@@ -78,16 +120,16 @@ Rectangle {
         Canvas {
             id: ledArc
             x: 412
-            y: 151
+            y: 275
             anchors.centerIn: parent
             anchors.horizontalCenter: parent.horizontalCenter
             // anchors.top: speedText.bottom
             z: 0
             anchors.verticalCenterOffset: 0
-            anchors.horizontalCenterOffset: 2
+            anchors.horizontalCenterOffset: 0
             anchors.topMargin: -107
             width: 460
-            height: 250
+            height: 286
 
             Text {
                 id: speedText
@@ -104,12 +146,22 @@ Rectangle {
                 anchors.horizontalCenterOffset: 1
                 color: "#FFFFFF"
             }
+
+            Image {
+                id: linecar
+                x: 191
+                y: 226
+                width: 76
+                height: 50
+                source: "../assets/linecar.png"
+                fillMode: Image.PreserveAspectFit
+            }
         }
 
         Rectangle {
             id: status
             x: 405
-            y: 531
+            y: 546
             width: 470
             height: 65
             color: "#313237"
@@ -194,8 +246,8 @@ Rectangle {
 
         Rectangle {
             id: roundedRect
-            x: 359
-            y: 599
+            x: 322
+            y: 652
             anchors.centerIn: parent
             width: 98
             height: 94
@@ -293,7 +345,7 @@ Rectangle {
 
         Rectangle {
             id: batteryIndicator
-            x: 130
+            x: 129
             y: 380
             width: 150
             height: 87
@@ -334,131 +386,50 @@ Rectangle {
         }
 
         Rectangle {
-            id: indikator
-            x: 390
-            y: 60
-            width: 500
-            height: 80
-            color: "#313237"
-            radius: 20
-
-            Rectangle {
-                id: rectLamp1
-                x: 160
-                y: 11
-                width: 70
-                height: 55
-                color: "#ffffff"
-                radius: 15
-
-                Image {
-                    id: lamp1
-                    x: 5
-                    y: 8
-                    width: 60
-                    height: 40
-                    source: "../assets/lamp1.png"
-                    fillMode: Image.PreserveAspectFit
-                }
-            }
-
-            Rectangle {
-                id: rectLamp2
-                x: 274
-                y: 11
-                width: 70
-                height: 55
-                color: "#ffffff"
-                radius: 15
-
-                Image {
-                    id: lamp2
-                    x: 5
-                    y: 8
-                    width: 60
-                    height: 40
-                    source: "../assets/lamp2.png"
-                    fillMode: Image.PreserveAspectFit
-                }
-            }
-
-            Rectangle {
-                id: rectRight
-                x: 398
-                y: 11
-                width: 70
-                height: 55
-                color: "#ffffff"
-                radius: 15
-
-                Image {
-                    id: right1
-                    x: 5
-                    y: 8
-                    width: 60
-                    height: 40
-                    source: "../assets/right.png"
-                    fillMode: Image.PreserveAspectFit
-                }
-            }
-
-            Rectangle {
-                id: rectLeft
-                x: 36
-                y: 11
-                width: 70
-                height: 55
-                color: "#ffffff"
-                radius: 15
-
-                Image {
-                    id: left1
-                    x: 5
-                    y: 8
-                    width: 60
-                    height: 40
-                    source: "../assets/left.png"
-                    fillMode: Image.PreserveAspectFit
-                }
-            }
-        }
-
-        Rectangle {
             id: dateTimeContainer
+            x: 405
+            y: 159
             width: 500
-            height: 57
+            height: 100
             anchors.top: parent.top
             anchors.horizontalCenterOffset: 15
             anchors.topMargin: 159
             anchors.horizontalCenter: parent.horizontalCenter
             color: "transparent"
 
-            Row {
+            Column {
                 anchors.centerIn: parent
-                spacing: 20
+                spacing: 5 // Jarak antara elemen di dalam kolom
 
                 // Waktu
                 Text {
                     id: timeText
                     color: "#FFFFFF"
-                    font.pixelSize: 20
+                    font.pixelSize: 30
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter // Ukuran font lebih besar untuk waktu
                     text: Qt.formatTime(new Date(), "hh:mm:ss A")
                 }
 
-                // Hari
-                Text {
-                    id: dayText
-                    color: "#FFFFFF"
-                    font.pixelSize: 20
-                    text: Qt.formatDate(new Date(), "dddd")
-                }
+                Row {
+                    anchors.horizontalCenter: parent.horizontalCenter // Pusatkan Row di kolom
+                    spacing: 10 // Jarak antara hari dan tanggal
 
-                // Tanggal
-                Text {
-                    id: dateText
-                    color: "#FFFFFF"
-                    font.pixelSize: 20
-                    text: Qt.formatDate(new Date(), "MMMM d, yyyy")
+                    // Hari
+                    Text {
+                        id: dayText
+                        color: "#FFFFFF"
+                        font.pixelSize: 20
+                        text: Qt.formatDate(new Date(), "dddd")
+                    }
+
+                    // Tanggal
+                    Text {
+                        id: dateText
+                        color: "#FFFFFF"
+                        font.pixelSize: 20
+                        text: Qt.formatDate(new Date(), "MMMM d, yyyy")
+                    }
                 }
             }
         }
