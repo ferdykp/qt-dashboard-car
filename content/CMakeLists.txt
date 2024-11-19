@@ -20,4 +20,10 @@ qt6_add_qml_module(content
         assets/needle.png
         assets/car.png
         assets/fuel.png
+        assets/side.png
+        assets/frame.png
+        assets/lamp1.png
+        assets/lamp2.png
+        assets/left.png
+        assets/right.png
 )

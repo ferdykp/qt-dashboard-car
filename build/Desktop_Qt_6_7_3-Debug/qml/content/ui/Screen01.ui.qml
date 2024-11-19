@@ -20,12 +20,19 @@ Rectangle {
     property alias buttonSwitch: buttonSwitch
     property alias parking: parking
     property alias reverse: reverse
-    property alias rectangle3: rectangle3
+    property alias rectLeft: rectLeft
+    property alias rectLamp1: rectLamp1
+    property alias rectLamp2: rectLamp2
+    property alias rectRight: rectRight
     property alias speedText: speedText
     property alias fuelText: fuelText
     property alias ledRow: ledRow
     property alias ledArc: ledArc
     property alias progressText: progressText
+    property alias batteryText: batteryText
+    property alias timeText: timeText
+    property alias dayText: dayText
+    property alias dateText: dateText
 
     Text {
         id: label
@@ -55,64 +62,63 @@ Rectangle {
         }
     }
 
-    Rectangle {
-        id: rectangle3
-        x: 39
-        y: 67
-        width: 1203
-        height: 620
-        color: "#484343"
-        radius: 10
-        enabled: false
+    Image {
+        id: frame
+        width: 1280
+        source: "../assets/frame.png"
+        fillMode: Image.PreserveAspectFit
 
-        // Tampilan teks untuk nilai speed
-
-        // LED Progress Bar dengan Rectangle sebagai segmen LED
-
-        // Canvas for LED Arc (Only declaration, no logic here)
-        Canvas {
-            id: ledArc
-            y: 47
-            anchors.centerIn: parent
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: speedText.bottom
-            z: 0
-            anchors.verticalCenterOffset: -101
-            anchors.horizontalCenterOffset: -1
-            anchors.topMargin: -107
-            width: 455
-            height: 250
+        Button {
+            id: buttonSwitch
+            x: 972
+            y: 727
+            text: qsTr("Button")
         }
 
-        // Speed Text Display
-        Text {
-            id: speedText
-            y: 263
+        Canvas {
+            id: ledArc
+            x: 412
+            y: 151
             anchors.centerIn: parent
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: ledArc.bottom
-            anchors.topMargin: -66
-            text: "0"
-            font.pixelSize: 30
-            horizontalAlignment: Text.AlignHCenter
-            anchors.verticalCenterOffset: -49
-            anchors.horizontalCenterOffset: -1
-            color: "#FFFFFF"
+            // anchors.top: speedText.bottom
+            z: 0
+            anchors.verticalCenterOffset: 0
+            anchors.horizontalCenterOffset: 2
+            anchors.topMargin: -107
+            width: 460
+            height: 250
+
+            Text {
+                id: speedText
+                x: 219
+                y: 156
+                anchors.centerIn: parent
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: ledArc.bottom
+                anchors.topMargin: 24
+                text: "0"
+                font.pixelSize: 30
+                horizontalAlignment: Text.AlignHCenter
+                anchors.verticalCenterOffset: 41
+                anchors.horizontalCenterOffset: 1
+                color: "#FFFFFF"
+            }
         }
 
         Rectangle {
-            id: indikator
-            x: 371
-            y: 347
-            width: 460
+            id: status
+            x: 405
+            y: 531
+            width: 470
             height: 65
             color: "#313237"
             radius: 20
 
             Rectangle {
                 id: parking
-                x: 34
-                y: 8
+                x: 36
+                y: 11
                 width: 71
                 height: 46
                 color: "#313237"
@@ -130,8 +136,8 @@ Rectangle {
 
             Rectangle {
                 id: reverse
-                x: 142
-                y: 8
+                x: 149
+                y: 11
                 width: 71
                 height: 46
                 color: "#313237"
@@ -149,8 +155,8 @@ Rectangle {
 
             Rectangle {
                 id: netral
-                x: 250
-                y: 8
+                x: 265
+                y: 11
                 width: 71
                 height: 46
                 color: "#313237"
@@ -168,8 +174,8 @@ Rectangle {
 
             Rectangle {
                 id: push
-                x: 358
-                y: 8
+                x: 369
+                y: 11
                 width: 71
                 height: 46
                 color: "#313237"
@@ -188,21 +194,21 @@ Rectangle {
 
         Rectangle {
             id: roundedRect
+            x: 359
+            y: 599
             anchors.centerIn: parent
-            width: 78
-            height: 80
-            radius: 20
+            width: 98
+            height: 94
+            radius: 47
             color: "#444"
-            border.color: "#666"
+            border.color: "#6ffff9"
             border.width: 2
-            anchors.verticalCenterOffset: 262
-            anchors.horizontalCenterOffset: -243
+            anchors.verticalCenterOffset: 299
+            anchors.horizontalCenterOffset: -269
 
-            // Teks untuk menampilkan persentase progres
             Text {
                 id: progressText
                 anchors.centerIn: parent
-                // text: mainScreen.percentage + " %"
                 text: "0"
                 font.pixelSize: 24
                 color: "#FFFFFF"
@@ -211,11 +217,14 @@ Rectangle {
 
         Rectangle {
             id: rectFuel
-            x: 418
-            y: 471
+            x: 442
+            y: 659
             width: 377
             height: 141
-            color: "#484343"
+            color: "#111010"
+            radius: 15
+            border.color: "#111010"
+            border.width: 2
 
             Text {
                 id: fuelText
@@ -227,7 +236,7 @@ Rectangle {
                 color: "#ffffff"
                 text: "0"
                 font.pixelSize: 40
-                anchors.horizontalCenterOffset: 106
+                anchors.horizontalCenterOffset: 91
             }
 
             Row {
@@ -237,7 +246,7 @@ Rectangle {
                 width: 291
                 height: 63
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: speedText.bottom
+                // anchors.top: speedText.bottom
                 anchors.horizontalCenterOffset: 0
                 anchors.topMargin: 202
                 spacing: 5
@@ -249,7 +258,6 @@ Rectangle {
                         height: 50
                         radius: 10
 
-                        // Warna dan opasitas LED berubah sesuai nilai speed
                         // color: Qt.rgba(1 - index / rectangle.numLeds, index / rectangle.numLeds, 0, 1)
                         color: "#00BFFF"
                         opacity: index < Math.floor(
@@ -268,7 +276,7 @@ Rectangle {
 
             Text {
                 id: text1
-                x: 133
+                x: 117
                 y: 7
                 width: 112
                 height: 57
@@ -282,13 +290,178 @@ Rectangle {
                 styleColor: "#ffffff"
             }
         }
-    }
 
-    Button {
-        id: buttonSwitch
-        x: 972
-        y: 727
-        text: qsTr("Button")
+        Rectangle {
+            id: batteryIndicator
+            x: 130
+            y: 380
+            width: 150
+            height: 87
+            // anchors.top: ledArc.bottom
+            anchors.topMargin: 20
+            anchors.horizontalCenter: parent.horizontalCenter
+            color: "#333333"
+            radius: 8
+            border.color: "#FFFFFF"
+            border.width: 2
+            anchors.horizontalCenterOffset: -436
+
+            // Level baterai
+            Rectangle {
+                id: batteryLevel
+                width: Math.max(
+                           0,
+                           batteryIndicator.width * mainScreen.batteryLevel / 100)
+                height: parent.height - 10
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: parent.left
+                anchors.leftMargin: 5
+                radius: 5
+                color: mainScreen.batteryLevel
+                       > 20 ? "#00FF00" : "#FF0000" // Hijau jika >20%, merah jika <=20%
+            }
+
+            // Persentase baterai
+            Text {
+                id: batteryText
+                anchors.centerIn: parent
+                color: "#FFFFFF"
+                // text: mainScreen.batteryLevel + " %"
+                text: "0"
+                font.pixelSize: 25
+                font.bold: true
+            }
+        }
+
+        Rectangle {
+            id: indikator
+            x: 390
+            y: 60
+            width: 500
+            height: 80
+            color: "#313237"
+            radius: 20
+
+            Rectangle {
+                id: rectLamp1
+                x: 160
+                y: 11
+                width: 70
+                height: 55
+                color: "#ffffff"
+                radius: 15
+
+                Image {
+                    id: lamp1
+                    x: 5
+                    y: 8
+                    width: 60
+                    height: 40
+                    source: "../assets/lamp1.png"
+                    fillMode: Image.PreserveAspectFit
+                }
+            }
+
+            Rectangle {
+                id: rectLamp2
+                x: 274
+                y: 11
+                width: 70
+                height: 55
+                color: "#ffffff"
+                radius: 15
+
+                Image {
+                    id: lamp2
+                    x: 5
+                    y: 8
+                    width: 60
+                    height: 40
+                    source: "../assets/lamp2.png"
+                    fillMode: Image.PreserveAspectFit
+                }
+            }
+
+            Rectangle {
+                id: rectRight
+                x: 398
+                y: 11
+                width: 70
+                height: 55
+                color: "#ffffff"
+                radius: 15
+
+                Image {
+                    id: right1
+                    x: 5
+                    y: 8
+                    width: 60
+                    height: 40
+                    source: "../assets/right.png"
+                    fillMode: Image.PreserveAspectFit
+                }
+            }
+
+            Rectangle {
+                id: rectLeft
+                x: 36
+                y: 11
+                width: 70
+                height: 55
+                color: "#ffffff"
+                radius: 15
+
+                Image {
+                    id: left1
+                    x: 5
+                    y: 8
+                    width: 60
+                    height: 40
+                    source: "../assets/left.png"
+                    fillMode: Image.PreserveAspectFit
+                }
+            }
+        }
+
+        Rectangle {
+            id: dateTimeContainer
+            width: 500
+            height: 57
+            anchors.top: parent.top
+            anchors.horizontalCenterOffset: 15
+            anchors.topMargin: 159
+            anchors.horizontalCenter: parent.horizontalCenter
+            color: "transparent"
+
+            Row {
+                anchors.centerIn: parent
+                spacing: 20
+
+                // Waktu
+                Text {
+                    id: timeText
+                    color: "#FFFFFF"
+                    font.pixelSize: 20
+                    text: Qt.formatTime(new Date(), "hh:mm:ss A")
+                }
+
+                // Hari
+                Text {
+                    id: dayText
+                    color: "#FFFFFF"
+                    font.pixelSize: 20
+                    text: Qt.formatDate(new Date(), "dddd")
+                }
+
+                // Tanggal
+                Text {
+                    id: dateText
+                    color: "#FFFFFF"
+                    font.pixelSize: 20
+                    text: Qt.formatDate(new Date(), "MMMM d, yyyy")
+                }
+            }
+        }
     }
 
     states: [
