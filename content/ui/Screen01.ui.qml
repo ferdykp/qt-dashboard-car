@@ -25,9 +25,11 @@ Rectangle {
     property alias rectLamp2: rectLamp2
     property alias rectRight: rectRight
     property alias speedText: speedText
+    property alias rpmText: rpmText
     property alias fuelText: fuelText
     property alias ledRow: ledRow
     property alias ledArc: ledArc
+    property alias rpmArc: rpmArc
     property alias progressText: progressText
     property alias batteryText: batteryText
     property alias timeText: timeText
@@ -155,6 +157,37 @@ Rectangle {
                 height: 50
                 source: "../assets/linecar.png"
                 fillMode: Image.PreserveAspectFit
+            }
+        }
+
+        Canvas {
+            id: rpmArc
+            x: 412
+            y: 275
+            anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
+            // anchors.top: speedText.bottom
+            z: 0
+            anchors.verticalCenterOffset: 24
+            anchors.horizontalCenterOffset: 433
+            anchors.topMargin: -107
+            width: 363
+            height: 225
+
+            Text {
+                id: rpmText
+                x: 219
+                y: 156
+                anchors.centerIn: parent
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: rpmArc.bottom
+                anchors.topMargin: 37
+                text: "0"
+                font.pixelSize: 30
+                horizontalAlignment: Text.AlignHCenter
+                anchors.verticalCenterOffset: 54
+                anchors.horizontalCenterOffset: -2
+                color: "#FFFFFF"
             }
         }
 

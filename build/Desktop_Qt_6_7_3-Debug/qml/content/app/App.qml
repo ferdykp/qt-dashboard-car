@@ -14,12 +14,15 @@ Window {
 
         // Properti yang mewakili data untuk antarmuka
         property int speedLeds: 90
+        property int rpmLeds : 90
         property int currentSpeed: 0
+        property int currentRpm: 0
+        property int maxSpeed: 180
+        property int maxRpm: 15
         property int fuelLeds: 8
         property int currentFuels: 0
         property int maxFuels: 100
         property int percent: 0
-        property int maxSpeed: 180
         property real progress: 0.0 // Nilai progres (0 - 1)
         property int batteryLevel: 90 // Level baterai default
 
@@ -48,7 +51,14 @@ Window {
         mainScreen.currentSpeed = newSpeed;
         speedText.text = newSpeed + "\n KM/H"; // Update speed text
         ledArc.requestPaint();  // Trigger the repaint of the Canvas (LED)
+        }
+
+        function updateRpm(newRpm) {
+        mainScreen.currentRpm = newRpm;
+        rpmText.text = newRpm + "\n RPMx1000"; // Update speed text
+        rpmArc.requestPaint();  // Trigger the repaint of the Canvas (LED)
          }
+
 
         function updateFuels(newFuels) {
         mainScreen.fuelText.text= newFuels.toString() + " %";
@@ -114,6 +124,51 @@ Window {
         }
     }
 
+    function rpmCanvas() {
+        let ctx = mainScreen.rpmArc.getContext("2d");
+        ctx.clearRect(0, 0, mainScreen.rpmArc.width, mainScreen.rpmArc.height);
+
+        let centerX = mainScreen.rpmArc.width / 2;
+        let centerY = mainScreen.rpmArc.height;
+        let radius = 120;
+
+        let totalSegments = mainScreen.rpmLeds; // Total rpm segmen
+        let activeSegments = Math.floor((mainScreen.currentRpm / mainScreen.maxRpm) * totalSegments);
+        let segmentAngle = Math.PI / totalSegments;
+
+        // Gambar segment rpm
+        for (let i = 0; i < totalSegments; i++) {
+            let startAngle = Math.PI + i * segmentAngle;
+            let endAngle = startAngle + segmentAngle * 0.8;
+
+            // Tentukan apakah ini rpm besar (kelipatan 10)
+            let isMajorTick = i % 10 === 0;
+            let currentRadius = isMajorTick ? radius + 15 : radius + 20;
+
+            // Gambar rpm
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, currentRadius, startAngle, endAngle);
+            ctx.strokeStyle = i < activeSegments ? "#00BFFF" : "#555555";
+            ctx.lineWidth = isMajorTick ? 30 : 20; // Lebih tebal untuk kelipatan 10
+            ctx.stroke();
+
+            // Gambar angka hanya untuk kelipatan 10
+            if (isMajorTick) {
+                let angleMid = startAngle + (endAngle - startAngle) / 2;
+                let textX = centerX + (radius - 10) * Math.cos(angleMid);
+                let textY = centerY + (radius - 10) * Math.sin(angleMid);
+
+                // Tampilkan teks angka (di bawah rpm)
+                // ctx.font = "16px Arial";
+                ctx.fillStyle = "#FFFFFF";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText((i * mainScreen.maxRpm / totalSegments).toFixed(0), textX, textY);
+            }
+        }
+    }
+
+
 
 
     // Timer untuk memperbarui progress secara otomatis
@@ -146,6 +201,18 @@ Window {
             speedCanvas();  // Update the Canvas display
             }
         }
+
+    Timer {
+        interval: 1000
+        running: true
+        repeat: true
+        onTriggered: {
+            let newRpm = Math.floor(Math.random() * mainScreen.maxRpm);
+            mainScreen.updateRpm(newRpm);
+            rpmCanvas();  // Update the Canvas display
+            }
+        }
+
 
     Timer {
         interval: 1000
