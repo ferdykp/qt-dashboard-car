@@ -20,6 +20,8 @@
     <file alias="assets/left.png">/home/inno/project-qt/Dashboard1/content/assets/left.png</file>
     <file alias="assets/right.png">/home/inno/project-qt/Dashboard1/content/assets/right.png</file>
     <file alias="assets/linecar.png">/home/inno/project-qt/Dashboard1/content/assets/linecar.png</file>
+    <file alias="assets/dash180.png">/home/inno/project-qt/Dashboard1/content/assets/dash180.png</file>
+    <file alias="assets/rpm180.png">/home/inno/project-qt/Dashboard1/content/assets/rpm180.png</file>
   </qresource>
 </RCC>
 

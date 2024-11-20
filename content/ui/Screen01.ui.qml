@@ -27,9 +27,11 @@ Rectangle {
     property alias speedText: speedText
     property alias rpmText: rpmText
     property alias fuelText: fuelText
+    property alias circleText: circleText
     property alias ledRow: ledRow
     property alias ledArc: ledArc
     property alias rpmArc: rpmArc
+    property alias circleArc: circleArc
     property alias progressText: progressText
     property alias batteryText: batteryText
     property alias timeText: timeText
@@ -135,27 +137,38 @@ Rectangle {
 
             Text {
                 id: speedText
-                x: 219
+                x: 221.925
                 y: 156
+                width: 17.15
                 anchors.centerIn: parent
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: ledArc.bottom
-                anchors.topMargin: 24
+                anchors.topMargin: 56
                 text: "0"
                 font.pixelSize: 30
                 horizontalAlignment: Text.AlignHCenter
-                anchors.verticalCenterOffset: 41
+                anchors.verticalCenterOffset: 73
                 anchors.horizontalCenterOffset: 1
                 color: "#FFFFFF"
             }
 
             Image {
                 id: linecar
-                x: 191
-                y: 226
-                width: 76
-                height: 50
+                x: 211
+                y: 261
+                width: 39
+                height: 25
                 source: "../assets/linecar.png"
+                fillMode: Image.PreserveAspectFit
+            }
+
+            Image {
+                id: dash180
+                x: 0
+                y: 21
+                width: 460
+                height: 300
+                source: "../assets/dash180.png"
                 fillMode: Image.PreserveAspectFit
             }
         }
@@ -183,10 +196,53 @@ Rectangle {
                 anchors.top: rpmArc.bottom
                 anchors.topMargin: 37
                 text: "0"
-                font.pixelSize: 30
+                font.pixelSize: 20
                 horizontalAlignment: Text.AlignHCenter
+                font.family: "Arial"
                 anchors.verticalCenterOffset: 54
                 anchors.horizontalCenterOffset: -2
+                color: "#FFFFFF"
+            }
+
+            Image {
+                id: rpm180
+                x: -12
+                y: 78
+                width: 386
+                height: 150
+                source: "../assets/rpm180.png"
+                fillMode: Image.PreserveAspectFit
+            }
+        }
+
+        Canvas {
+            id: circleArc
+            x: 412
+            y: 275
+            anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
+            // anchors.top: speedText.bottom
+            z: 0
+            anchors.verticalCenterOffset: -150
+            anchors.horizontalCenterOffset: -312
+            anchors.topMargin: -107
+            width: 120
+            height: 120
+
+            Text {
+                id: circleText
+                x: 219
+                y: 156
+                anchors.centerIn: parent
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: circleArc.center
+                anchors.topMargin: 37
+                text: "0"
+                font.pixelSize: 20
+                horizontalAlignment: Text.AlignHCenter
+                font.family: "Arial"
+                anchors.verticalCenterOffset: 3
+                anchors.horizontalCenterOffset: 1
                 color: "#FFFFFF"
             }
         }
@@ -285,7 +341,7 @@ Rectangle {
             width: 98
             height: 94
             radius: 47
-            color: "#444"
+            color: "#111010"
             border.color: "#6ffff9"
             border.width: 2
             anchors.verticalCenterOffset: 299
@@ -341,7 +397,7 @@ Rectangle {
                     Rectangle {
                         width: 30
                         height: 50
-                        radius: 10
+                        radius: 5
 
                         // color: Qt.rgba(1 - index / rectangle.numLeds, index / rectangle.numLeds, 0, 1)
                         color: "#00BFFF"
@@ -385,7 +441,7 @@ Rectangle {
             // anchors.top: ledArc.bottom
             anchors.topMargin: 20
             anchors.horizontalCenter: parent.horizontalCenter
-            color: "#333333"
+            color: "#111010"
             radius: 8
             border.color: "#FFFFFF"
             border.width: 2
@@ -403,7 +459,7 @@ Rectangle {
                 anchors.leftMargin: 5
                 radius: 5
                 color: mainScreen.batteryLevel
-                       > 20 ? "#00FF00" : "#FF0000" // Hijau jika >20%, merah jika <=20%
+                       > 20 ? "#44e6f8" : "#1c3e4b" // Hijau jika >20%, merah jika <=20%
             }
 
             // Persentase baterai
@@ -415,6 +471,18 @@ Rectangle {
                 text: "0"
                 font.pixelSize: 25
                 font.bold: true
+            }
+
+            Text {
+                id: energyText
+                anchors.centerIn: parent
+                color: "#FFFFFF"
+                // text: mainScreen.batteryLevel + " %"
+                text: "Battery Energy"
+                font.pixelSize: 15
+                anchors.verticalCenterOffset: 63
+                anchors.horizontalCenterOffset: 0
+                font.bold: false
             }
         }
 
@@ -479,3 +547,10 @@ Rectangle {
         }
     ]
 }
+
+/*##^##
+Designer {
+    D{i:0}D{i:6;locked:true}
+}
+##^##*/
+

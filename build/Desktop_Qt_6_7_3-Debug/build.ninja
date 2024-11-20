@@ -6989,7 +6989,7 @@ build content/content_qmllint_module: phony content/CMakeFiles/content_qmllint_m
 #############################################
 # Utility command for content_tooling
 
-build content/content_tooling: phony qml/content/app/App.qml qml/content/ui/Screen01.ui.qml qml/content/fonts/fonts.txt qml/content/assets/menu.png qml/content/assets/home.png qml/content/assets/notif.png qml/content/assets/Section3_1.png qml/content/assets/Section3_2.png qml/content/assets/Section3_3.png qml/content/assets/setting.png qml/content/assets/needle.png qml/content/assets/car.png qml/content/assets/fuel.png qml/content/assets/side.png qml/content/assets/framehole.png qml/content/assets/lamp1.png qml/content/assets/lamp2.png qml/content/assets/left.png qml/content/assets/right.png qml/content/assets/linecar.png
+build content/content_tooling: phony qml/content/app/App.qml qml/content/ui/Screen01.ui.qml qml/content/fonts/fonts.txt qml/content/assets/menu.png qml/content/assets/home.png qml/content/assets/notif.png qml/content/assets/Section3_1.png qml/content/assets/Section3_2.png qml/content/assets/Section3_3.png qml/content/assets/setting.png qml/content/assets/needle.png qml/content/assets/car.png qml/content/assets/fuel.png qml/content/assets/side.png qml/content/assets/framehole.png qml/content/assets/lamp1.png qml/content/assets/lamp2.png qml/content/assets/left.png qml/content/assets/right.png qml/content/assets/linecar.png qml/content/assets/dash180.png qml/content/assets/rpm180.png
 
 # =============================================================================
 # Object build statements for OBJECT_LIBRARY target content_resources_2
@@ -7207,7 +7207,7 @@ build content/.rcc/qmlcache/content_ui/Screen01.ui_qml.cpp | ${cmake_ninja_workd
 #############################################
 # Custom command for content/.qt/rcc/qrc_content_raw_qml_0.cpp
 
-build content/.qt/rcc/qrc_content_raw_qml_0.cpp | ${cmake_ninja_workdir}content/.qt/rcc/qrc_content_raw_qml_0.cpp: CUSTOM_COMMAND /home/inno/project-qt/Dashboard1/content/app/App.qml /home/inno/project-qt/Dashboard1/content/ui/Screen01.ui.qml /home/inno/project-qt/Dashboard1/content/fonts/fonts.txt /home/inno/project-qt/Dashboard1/content/assets/menu.png /home/inno/project-qt/Dashboard1/content/assets/home.png /home/inno/project-qt/Dashboard1/content/assets/notif.png /home/inno/project-qt/Dashboard1/content/assets/Section3_1.png /home/inno/project-qt/Dashboard1/content/assets/Section3_2.png /home/inno/project-qt/Dashboard1/content/assets/Section3_3.png /home/inno/project-qt/Dashboard1/content/assets/setting.png /home/inno/project-qt/Dashboard1/content/assets/needle.png /home/inno/project-qt/Dashboard1/content/assets/car.png /home/inno/project-qt/Dashboard1/content/assets/fuel.png /home/inno/project-qt/Dashboard1/content/assets/side.png /home/inno/project-qt/Dashboard1/content/assets/framehole.png /home/inno/project-qt/Dashboard1/content/assets/lamp1.png /home/inno/project-qt/Dashboard1/content/assets/lamp2.png /home/inno/project-qt/Dashboard1/content/assets/left.png /home/inno/project-qt/Dashboard1/content/assets/right.png /home/inno/project-qt/Dashboard1/content/assets/linecar.png content/.qt/rcc/content_raw_qml_0.qrc /home/inno/Qt/6.7.3/gcc_64/libexec/rcc || content/content_autogen content/content_autogen_timestamp_deps content/content_tooling
+build content/.qt/rcc/qrc_content_raw_qml_0.cpp | ${cmake_ninja_workdir}content/.qt/rcc/qrc_content_raw_qml_0.cpp: CUSTOM_COMMAND /home/inno/project-qt/Dashboard1/content/app/App.qml /home/inno/project-qt/Dashboard1/content/ui/Screen01.ui.qml /home/inno/project-qt/Dashboard1/content/fonts/fonts.txt /home/inno/project-qt/Dashboard1/content/assets/menu.png /home/inno/project-qt/Dashboard1/content/assets/home.png /home/inno/project-qt/Dashboard1/content/assets/notif.png /home/inno/project-qt/Dashboard1/content/assets/Section3_1.png /home/inno/project-qt/Dashboard1/content/assets/Section3_2.png /home/inno/project-qt/Dashboard1/content/assets/Section3_3.png /home/inno/project-qt/Dashboard1/content/assets/setting.png /home/inno/project-qt/Dashboard1/content/assets/needle.png /home/inno/project-qt/Dashboard1/content/assets/car.png /home/inno/project-qt/Dashboard1/content/assets/fuel.png /home/inno/project-qt/Dashboard1/content/assets/side.png /home/inno/project-qt/Dashboard1/content/assets/framehole.png /home/inno/project-qt/Dashboard1/content/assets/lamp1.png /home/inno/project-qt/Dashboard1/content/assets/lamp2.png /home/inno/project-qt/Dashboard1/content/assets/left.png /home/inno/project-qt/Dashboard1/content/assets/right.png /home/inno/project-qt/Dashboard1/content/assets/linecar.png /home/inno/project-qt/Dashboard1/content/assets/dash180.png /home/inno/project-qt/Dashboard1/content/assets/rpm180.png content/.qt/rcc/content_raw_qml_0.qrc /home/inno/Qt/6.7.3/gcc_64/libexec/rcc || content/content_autogen content/content_autogen_timestamp_deps content/content_tooling
   COMMAND = cd /home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/content && /home/inno/Qt/6.7.3/gcc_64/libexec/rcc --output /home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/content/.qt/rcc/qrc_content_raw_qml_0.cpp --name content_raw_qml_0 /home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/content/.qt/rcc/content_raw_qml_0.qrc
   DESC = Running rcc for resource content_raw_qml_0
   restat = 1
@@ -7448,6 +7448,24 @@ build qml/content/assets/right.png | ${cmake_ninja_workdir}qml/content/assets/ri
 build qml/content/assets/linecar.png | ${cmake_ninja_workdir}qml/content/assets/linecar.png: CUSTOM_COMMAND /home/inno/project-qt/Dashboard1/content/assets/linecar.png
   COMMAND = cd /home/inno/project-qt/Dashboard1/content && /home/inno/Qt/Tools/CMake/bin/cmake -E copy /home/inno/project-qt/Dashboard1/content/assets/linecar.png /home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml/content/assets/linecar.png
   DESC = Copying assets/linecar.png to /home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml/content/assets/linecar.png
+  restat = 1
+
+
+#############################################
+# Custom command for qml/content/assets/dash180.png
+
+build qml/content/assets/dash180.png | ${cmake_ninja_workdir}qml/content/assets/dash180.png: CUSTOM_COMMAND /home/inno/project-qt/Dashboard1/content/assets/dash180.png
+  COMMAND = cd /home/inno/project-qt/Dashboard1/content && /home/inno/Qt/Tools/CMake/bin/cmake -E copy /home/inno/project-qt/Dashboard1/content/assets/dash180.png /home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml/content/assets/dash180.png
+  DESC = Copying assets/dash180.png to /home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml/content/assets/dash180.png
+  restat = 1
+
+
+#############################################
+# Custom command for qml/content/assets/rpm180.png
+
+build qml/content/assets/rpm180.png | ${cmake_ninja_workdir}qml/content/assets/rpm180.png: CUSTOM_COMMAND /home/inno/project-qt/Dashboard1/content/assets/rpm180.png
+  COMMAND = cd /home/inno/project-qt/Dashboard1/content && /home/inno/Qt/Tools/CMake/bin/cmake -E copy /home/inno/project-qt/Dashboard1/content/assets/rpm180.png /home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml/content/assets/rpm180.png
+  DESC = Copying assets/rpm180.png to /home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/qml/content/assets/rpm180.png
   restat = 1
 
 

@@ -27,4 +27,6 @@ qt6_add_qml_module(content
         assets/left.png
         assets/right.png
         assets/linecar.png
+        assets/dash180.png
+        assets/rpm180.png
 )

@@ -15,12 +15,15 @@ Window {
         // Properti yang mewakili data untuk antarmuka
         property int speedLeds: 90
         property int rpmLeds : 90
+        property int circleLeds : 100
         property int currentSpeed: 0
         property int currentRpm: 0
+        property int currentFuels: 0
+        property int currentCircle: 0
         property int maxSpeed: 180
         property int maxRpm: 15
+        property int maxCircle: 100
         property int fuelLeds: 8
-        property int currentFuels: 0
         property int maxFuels: 100
         property int percent: 0
         property real progress: 0.0 // Nilai progres (0 - 1)
@@ -55,7 +58,7 @@ Window {
 
         function updateRpm(newRpm) {
         mainScreen.currentRpm = newRpm;
-        rpmText.text = newRpm + "\n RPMx1000"; // Update speed text
+        rpmText.text = newRpm + "\n GEAR"; // Update speed text
         rpmArc.requestPaint();  // Trigger the repaint of the Canvas (LED)
          }
 
@@ -75,6 +78,13 @@ Window {
         function updateBatteryLevel(newLevel) {
             mainScreen.batteryText.text = newLevel + " %";
             mainScreen.batteryLevel = Math.min(100, Math.max(0, newLevel)); // Batas 0-100
+        }
+
+        function updateCircle(newCircle) {
+            mainScreen.currentCircle = newCircle;
+            circleText.text = newCircle + "%"
+            circleText.text = newCircle + "\n throttle";
+            circleArc.requestPaint();  // Trigger the repaint of the Canvas (LED)
         }
 
     }
@@ -125,50 +135,74 @@ Window {
     }
 
     function rpmCanvas() {
-        let ctx = mainScreen.rpmArc.getContext("2d");
-        ctx.clearRect(0, 0, mainScreen.rpmArc.width, mainScreen.rpmArc.height);
+           let ctx = mainScreen.rpmArc.getContext("2d");
+           ctx.clearRect(0, 0, mainScreen.rpmArc.width, mainScreen.rpmArc.height);
 
-        let centerX = mainScreen.rpmArc.width / 2;
-        let centerY = mainScreen.rpmArc.height;
-        let radius = 120;
+           let centerX = mainScreen.rpmArc.width / 2;
+           let centerY = mainScreen.rpmArc.height;
+           let radius = 100;
 
-        let totalSegments = mainScreen.rpmLeds; // Total rpm segmen
-        let activeSegments = Math.floor((mainScreen.currentRpm / mainScreen.maxRpm) * totalSegments);
-        let segmentAngle = Math.PI / totalSegments;
+           let totalSegments = mainScreen.rpmLeds; // Total rpm segmen
+           let activeSegments = Math.floor((mainScreen.currentRpm / mainScreen.maxRpm) * totalSegments);
+           let segmentAngle = Math.PI / totalSegments;
 
-        // Gambar segment rpm
-        for (let i = 0; i < totalSegments; i++) {
-            let startAngle = Math.PI + i * segmentAngle;
-            let endAngle = startAngle + segmentAngle * 0.8;
+           // Gambar segment rpm
+           for (let i = 0; i < totalSegments; i++) {
+               let startAngle = Math.PI + i * segmentAngle;
+               let endAngle = startAngle + segmentAngle * 0.8;
 
-            // Tentukan apakah ini rpm besar (kelipatan 10)
-            let isMajorTick = i % 10 === 0;
-            let currentRadius = isMajorTick ? radius + 15 : radius + 20;
+               // Tentukan apakah ini rpm besar (kelipatan 10)
+               let isMajorTick = i % 10 === 0;
+               let currentRadius = isMajorTick ? radius + 15 : radius + 20;
 
-            // Gambar rpm
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, currentRadius, startAngle, endAngle);
-            ctx.strokeStyle = i < activeSegments ? "#00BFFF" : "#555555";
-            ctx.lineWidth = isMajorTick ? 30 : 20; // Lebih tebal untuk kelipatan 10
-            ctx.stroke();
+               // Gambar rpm
+               ctx.beginPath();
+               ctx.arc(centerX, centerY, currentRadius, startAngle, endAngle);
+               ctx.strokeStyle = i < activeSegments ? "#00BFFF" : "#555555";
+               ctx.lineWidth = isMajorTick ? 30 : 20; // Lebih tebal untuk kelipatan 10
+               ctx.stroke();
 
-            // Gambar angka hanya untuk kelipatan 10
-            if (isMajorTick) {
-                let angleMid = startAngle + (endAngle - startAngle) / 2;
-                let textX = centerX + (radius - 10) * Math.cos(angleMid);
-                let textY = centerY + (radius - 10) * Math.sin(angleMid);
+               // Gambar angka hanya untuk kelipatan 10
+               if (isMajorTick) {
+                   let angleMid = startAngle + (endAngle - startAngle) / 2;
+                   let textX = centerX + (radius - 10) * Math.cos(angleMid);
+                   let textY = centerY + (radius - 10) * Math.sin(angleMid);
 
-                // Tampilkan teks angka (di bawah rpm)
-                // ctx.font = "16px Arial";
-                ctx.fillStyle = "#FFFFFF";
-                ctx.textAlign = "center";
-                ctx.textBaseline = "middle";
-                ctx.fillText((i * mainScreen.maxRpm / totalSegments).toFixed(0), textX, textY);
-            }
-        }
+                   // Tampilkan teks angka (di bawah rpm)
+                   // ctx.font = "16px Arial";
+                   ctx.fillStyle = "#FFFFFF";
+                   ctx.textAlign = "center";
+                   ctx.textBaseline = "middle";
+                   ctx.fillText((i * mainScreen.maxRpm / totalSegments).toFixed(0), textX, textY);
+               }
+           }
     }
 
+    function circleCanvas() {
+            let ctx = mainScreen.circleArc.getContext("2d");
+            ctx.clearRect(0, 0, mainScreen.circleArc.width, mainScreen.circleArc.height);
 
+            let centerX = mainScreen.circleArc.width / 2;
+            let centerY = mainScreen.circleArc.height / 2; // Pusat lingkaran
+            let radius = 50;
+
+            let totalSegments = mainScreen.circleLeds; // Total jumlah segmen lingkaran
+            let activeSegments = Math.floor((mainScreen.currentCircle / mainScreen.maxCircle) * totalSegments); // Aktif sesuai persentase
+            let segmentAngle = (2 * Math.PI) / totalSegments; // Sudut per segmen
+
+            // Gambar segmen lingkaran
+            for (let i = 0; i < totalSegments; i++) {
+                let startAngle = -Math.PI / 2 + i * segmentAngle; // Mulai dari posisi 12 o'clock
+                let endAngle = startAngle + segmentAngle * 2; // Celah antar segmen
+
+                // Gambar lingkaran sesuai aktif/tidak aktif
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.strokeStyle = i < activeSegments ? "#44e6f8" : "#555555"; // Warna segmen
+                ctx.lineWidth = 5; // Ketebalan segmen
+                ctx.stroke();
+            }
+        }
 
 
     // Timer untuk memperbarui progress secara otomatis
@@ -212,6 +246,23 @@ Window {
             rpmCanvas();  // Update the Canvas display
             }
         }
+
+    Timer {
+        interval: 1000
+        running: true
+        repeat: true
+        onTriggered: {
+            // let newCircle = Math.floor(Math.random() * mainScreen.maxCircle);
+            // mainScreen.updateCircle(newCircle);
+            // circleCanvas();  // Update the Canvas display
+
+                let newCircle = Math.floor(0.3 * mainScreen.maxCircle); // Tetapkan nilai 80%
+                mainScreen.updateCircle(newCircle);
+                circleCanvas(); // Update kanvas tampilan
+
+            }
+        }
+
 
 
     Timer {
