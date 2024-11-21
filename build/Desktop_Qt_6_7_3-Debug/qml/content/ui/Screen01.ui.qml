@@ -24,14 +24,20 @@ Rectangle {
     property alias rectLamp1: rectLamp1
     property alias rectLamp2: rectLamp2
     property alias rectRight: rectRight
+    property alias rectMode: rectMode
+    property alias textEco: textEco
     property alias speedText: speedText
     property alias rpmText: rpmText
-    property alias fuelText: fuelText
+    property alias healthText: healthText
+    // property alias fuelText: fuelText
     property alias circleText: circleText
-    property alias ledRow: ledRow
+    property alias tempText: tempText
+    // property alias ledRow: ledRow
     property alias ledArc: ledArc
     property alias rpmArc: rpmArc
     property alias circleArc: circleArc
+    property alias tempArc: tempArc
+    property alias healthArc: healthArc
     property alias progressText: progressText
     property alias batteryText: batteryText
     property alias timeText: timeText
@@ -118,7 +124,7 @@ Rectangle {
             id: buttonSwitch
             x: 972
             y: 727
-            text: qsTr("Button")
+            text: qsTr("Switch Mode")
         }
 
         Canvas {
@@ -223,8 +229,8 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             // anchors.top: speedText.bottom
             z: 0
-            anchors.verticalCenterOffset: -150
-            anchors.horizontalCenterOffset: -312
+            anchors.verticalCenterOffset: -191
+            anchors.horizontalCenterOffset: -328
             anchors.topMargin: -107
             width: 120
             height: 120
@@ -238,11 +244,75 @@ Rectangle {
                 anchors.top: circleArc.center
                 anchors.topMargin: 37
                 text: "0"
-                font.pixelSize: 20
+                font.pixelSize: 15
                 horizontalAlignment: Text.AlignHCenter
                 font.family: "Arial"
-                anchors.verticalCenterOffset: 3
-                anchors.horizontalCenterOffset: 1
+                anchors.verticalCenterOffset: 1
+                anchors.horizontalCenterOffset: 0
+                color: "#FFFFFF"
+            }
+        }
+
+        Canvas {
+            id: tempArc
+            x: 412
+            y: 275
+            anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
+            // anchors.top: speedText.bottom
+            z: 0
+            anchors.verticalCenterOffset: -191
+            anchors.horizontalCenterOffset: 331
+            anchors.topMargin: -107
+            width: 120
+            height: 120
+
+            Text {
+                id: tempText
+                x: 219
+                y: 156
+                anchors.centerIn: parent
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: tempArc.center
+                anchors.topMargin: 37
+                text: "0"
+                font.pixelSize: 15
+                horizontalAlignment: Text.AlignHCenter
+                font.family: "Arial"
+                anchors.verticalCenterOffset: 1
+                anchors.horizontalCenterOffset: 0
+                color: "#FFFFFF"
+            }
+        }
+
+        Canvas {
+            id: healthArc
+            x: 412
+            y: 275
+            anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
+            // anchors.top: speedText.bottom
+            z: 0
+            anchors.verticalCenterOffset: 286
+            anchors.horizontalCenterOffset: 331
+            anchors.topMargin: -107
+            width: 120
+            height: 120
+
+            Text {
+                id: healthText
+                x: 219
+                y: 156
+                anchors.centerIn: parent
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: healthArc.center
+                anchors.topMargin: 37
+                text: "0"
+                font.pixelSize: 15
+                horizontalAlignment: Text.AlignHCenter
+                font.family: "Arial"
+                anchors.verticalCenterOffset: 1
+                anchors.horizontalCenterOffset: 0
                 color: "#FFFFFF"
             }
         }
@@ -356,96 +426,95 @@ Rectangle {
             }
         }
 
-        Rectangle {
-            id: rectFuel
-            x: 442
-            y: 659
-            width: 377
-            height: 141
-            color: "#111010"
-            radius: 15
-            border.color: "#111010"
-            border.width: 2
+        // Rectangle {
+        //     id: rectFuel
+        //     x: 52
+        //     y: 412
+        //     width: 325
+        //     height: 131
+        //     color: "#111010"
+        //     radius: 15
+        //     border.color: "#111010"
+        //     border.width: 2
 
-            Text {
-                id: fuelText
-                x: 248
-                y: -6
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: 8
-                color: "#ffffff"
-                text: "0"
-                font.pixelSize: 40
-                anchors.horizontalCenterOffset: 91
-            }
+        //     Text {
+        //         id: fuelText
+        //         x: 248
+        //         y: -6
+        //         anchors.horizontalCenter: parent.horizontalCenter
+        //         anchors.top: parent.top
+        //         anchors.topMargin: 8
+        //         color: "#ffffff"
+        //         text: "0"
+        //         font.pixelSize: 40
+        //         anchors.horizontalCenterOffset: 91
+        //     }
 
-            Row {
-                id: ledRow
-                x: 37
-                y: 72
-                width: 291
-                height: 63
-                anchors.horizontalCenter: parent.horizontalCenter
-                // anchors.top: speedText.bottom
-                anchors.horizontalCenterOffset: 0
-                anchors.topMargin: 202
-                spacing: 5
+        //     Row {
+        //         id: ledRow
+        //         x: 37
+        //         y: 72
+        //         width: 291
+        //         height: 63
+        //         anchors.horizontalCenter: parent.horizontalCenter
+        //         // anchors.top: speedText.bottom
+        //         anchors.horizontalCenterOffset: 0
+        //         anchors.topMargin: 202
+        //         spacing: 5
 
-                Repeater {
-                    model: rectangle.fuelLeds
-                    Rectangle {
-                        width: 30
-                        height: 50
-                        radius: 5
+        //         Repeater {
+        //             model: rectangle.fuelLeds
+        //             Rectangle {
+        //                 width: 30
+        //                 height: 50
+        //                 radius: 5
 
-                        // color: Qt.rgba(1 - index / rectangle.numLeds, index / rectangle.numLeds, 0, 1)
-                        color: "#00BFFF"
-                        opacity: index < Math.floor(
-                                     (rectangle.currentFuels / 100) * rectangle.fuelLeds) ? 1 : 0.3
-                    }
-                }
-            }
+        //                 // color: Qt.rgba(1 - index / rectangle.numLeds, index / rectangle.numLeds, 0, 1)
+        //                 color: "#00BFFF"
+        //                 opacity: index < Math.floor(
+        //                              (rectangle.currentFuels / 100) * rectangle.fuelLeds) ? 1 : 0.3
+        //             }
+        //         }
+        //     }
 
-            Image {
-                id: fuel
-                x: 52
-                y: 11
-                source: "../assets/fuel.png"
-                fillMode: Image.PreserveAspectFit
-            }
+        //     Image {
+        //         id: fuel
+        //         x: 52
+        //         y: 11
+        //         source: "../assets/fuel.png"
+        //         fillMode: Image.PreserveAspectFit
+        //     }
 
-            Text {
-                id: text1
-                x: 117
-                y: 7
-                width: 112
-                height: 57
-                color: "#ffffff"
-                text: qsTr("Remaining Fuel")
-                elide: Text.ElideNone
-                font.pixelSize: 20
-                wrapMode: Text.WrapAnywhere
-                textFormat: Text.RichText
-                fontSizeMode: Text.Fit
-                styleColor: "#ffffff"
-            }
-        }
-
+        //     Text {
+        //         id: text1
+        //         x: 117
+        //         y: 7
+        //         width: 112
+        //         height: 57
+        //         color: "#ffffff"
+        //         text: qsTr("Remaining Fuel")
+        //         elide: Text.ElideNone
+        //         font.pixelSize: 20
+        //         wrapMode: Text.WrapAnywhere
+        //         textFormat: Text.RichText
+        //         fontSizeMode: Text.Fit
+        //         styleColor: "#ffffff"
+        //     }
+        // }
         Rectangle {
             id: batteryIndicator
             x: 129
-            y: 380
-            width: 150
+            y: 659
+            width: 220
             height: 87
             // anchors.top: ledArc.bottom
             anchors.topMargin: 20
             anchors.horizontalCenter: parent.horizontalCenter
-            color: "#111010"
+            color: "#1C3E4B"
             radius: 8
-            border.color: "#FFFFFF"
-            border.width: 2
-            anchors.horizontalCenterOffset: -436
+            // border.color: "#FFFFFF"
+            // border.width: 1
+            anchors.horizontalCenterOffset: 15
 
             // Level baterai
             Rectangle {
@@ -458,8 +527,20 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 5
                 radius: 5
-                color: mainScreen.batteryLevel
-                       > 20 ? "#44e6f8" : "#1c3e4b" // Hijau jika >20%, merah jika <=20%
+
+                // color: mainScreen.batteryLevel > 20 ? "#44e6f8" : "#1c3e4b"
+                gradient: Gradient {
+                    GradientStop {
+                        position: 0.0
+                        color: mainScreen.batteryLevel > 20 ? "#264653" // (jika > 20%)
+                                                            : "#ea441d" // (jika <= 20%)
+                    }
+                    GradientStop {
+                        position: 1.0
+                        color: mainScreen.batteryLevel > 20 ? "#3299c2" // Warna gelap transparan
+                                                            : "#170804" // Merah gelap transparan
+                    }
+                }
             }
 
             // Persentase baterai
@@ -475,12 +556,16 @@ Rectangle {
 
             Text {
                 id: energyText
+                width: 144
+                height: 51
                 anchors.centerIn: parent
                 color: "#FFFFFF"
                 // text: mainScreen.batteryLevel + " %"
                 text: "Battery Energy"
-                font.pixelSize: 15
-                anchors.verticalCenterOffset: 63
+                font.pixelSize: 20
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.WrapAnywhere
+                anchors.verticalCenterOffset: 64
                 anchors.horizontalCenterOffset: 0
                 font.bold: false
             }
@@ -532,6 +617,31 @@ Rectangle {
                         text: Qt.formatDate(new Date(), "MMMM d, yyyy")
                     }
                 }
+            }
+        }
+
+        Rectangle {
+            id: rectMode
+            x: 149
+            y: 333
+            width: 141
+            height: 134
+            color: "#111010"
+            radius: 68
+            border.color: "#ffffff"
+            border.width: 4
+
+            Text {
+                id: textEco
+                x: 39
+                y: 43
+                width: 64
+                height: 48
+                color: "#ffffff"
+                text: qsTr("ECO")
+                font.pixelSize: 20
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
             }
         }
     }
