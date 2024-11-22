@@ -20,6 +20,8 @@ Rectangle {
     property alias buttonSwitch: buttonSwitch
     property alias parking: parking
     property alias reverse: reverse
+    property alias netral: netral
+    property alias push: push
     property alias rectLeft: rectLeft
     property alias rectLamp1: rectLamp1
     property alias rectLamp2: rectLamp2
@@ -27,18 +29,21 @@ Rectangle {
     property alias rectMode: rectMode
     property alias textEco: textEco
     property alias speedText: speedText
-    property alias rpmText: rpmText
-    property alias healthText: healthText
-    // property alias fuelText: fuelText
-    property alias circleText: circleText
-    property alias tempText: tempText
-    // property alias ledRow: ledRow
     property alias ledArc: ledArc
+    property alias rpmText: rpmText
     property alias rpmArc: rpmArc
-    property alias circleArc: circleArc
-    property alias tempArc: tempArc
+    property alias healthText: healthText
     property alias healthArc: healthArc
-    property alias progressText: progressText
+    property alias circleText: circleText
+    property alias circleArc: circleArc
+    property alias tempText: tempText
+    property alias tempArc: tempArc
+    property alias chargeText: chargeText
+    property alias chargeArc: chargeArc
+    property alias rectIndicator: rectIndicator
+    property alias textIndicator: textIndicator
+    // property alias fuelText: fuelText
+    // property alias ledRow: ledRow
     property alias batteryText: batteryText
     property alias timeText: timeText
     property alias dayText: dayText
@@ -230,7 +235,7 @@ Rectangle {
             // anchors.top: speedText.bottom
             z: 0
             anchors.verticalCenterOffset: -191
-            anchors.horizontalCenterOffset: -328
+            anchors.horizontalCenterOffset: -296
             anchors.topMargin: -107
             width: 120
             height: 120
@@ -262,7 +267,7 @@ Rectangle {
             // anchors.top: speedText.bottom
             z: 0
             anchors.verticalCenterOffset: -191
-            anchors.horizontalCenterOffset: 331
+            anchors.horizontalCenterOffset: 311
             anchors.topMargin: -107
             width: 120
             height: 120
@@ -293,8 +298,8 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             // anchors.top: speedText.bottom
             z: 0
-            anchors.verticalCenterOffset: 286
-            anchors.horizontalCenterOffset: 331
+            anchors.verticalCenterOffset: 312
+            anchors.horizontalCenterOffset: 250
             anchors.topMargin: -107
             width: 120
             height: 120
@@ -306,6 +311,37 @@ Rectangle {
                 anchors.centerIn: parent
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: healthArc.center
+                anchors.topMargin: 37
+                text: "0"
+                font.pixelSize: 15
+                horizontalAlignment: Text.AlignHCenter
+                font.family: "Arial"
+                anchors.verticalCenterOffset: 1
+                anchors.horizontalCenterOffset: 0
+                color: "#FFFFFF"
+            }
+        }
+
+        Canvas {
+            id: chargeArc
+            x: 412
+            y: 275
+            anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
+            z: 0
+            anchors.verticalCenterOffset: 312
+            anchors.horizontalCenterOffset: -253
+            anchors.topMargin: -107
+            width: 120
+            height: 120
+
+            Text {
+                id: chargeText
+                x: 219
+                y: 156
+                anchors.centerIn: parent
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: chargeArc.center
                 anchors.topMargin: 37
                 text: "0"
                 font.pixelSize: 15
@@ -400,29 +436,6 @@ Rectangle {
                     text: qsTr("D")
                     font.pixelSize: 21
                 }
-            }
-        }
-
-        Rectangle {
-            id: roundedRect
-            x: 322
-            y: 652
-            anchors.centerIn: parent
-            width: 98
-            height: 94
-            radius: 47
-            color: "#111010"
-            border.color: "#6ffff9"
-            border.width: 2
-            anchors.verticalCenterOffset: 299
-            anchors.horizontalCenterOffset: -269
-
-            Text {
-                id: progressText
-                anchors.centerIn: parent
-                text: "0"
-                font.pixelSize: 24
-                color: "#FFFFFF"
             }
         }
 
@@ -622,14 +635,14 @@ Rectangle {
 
         Rectangle {
             id: rectMode
-            x: 149
+            x: 77
             y: 333
             width: 141
             height: 134
-            color: "#111010"
+            color: "#000000"
             radius: 68
-            border.color: "#ffffff"
-            border.width: 4
+            border.color: "#00FF7F"
+            border.width: 10
 
             Text {
                 id: textEco
@@ -638,7 +651,32 @@ Rectangle {
                 width: 64
                 height: 48
                 color: "#ffffff"
-                text: qsTr("ECO")
+                text: mainScreen.currentMode // Referensi ke properti/variabel
+                font.pixelSize: 20
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
+        }
+
+        Rectangle {
+            id: rectIndicator
+            x: 327
+            y: 365
+            width: 80
+            height: 80
+            color: "#000000"
+            radius: 10
+            border.color: "white"
+            border.width: 3
+
+            Text {
+                id: textIndicator
+                x: 10
+                y: 10
+                width: 60
+                height: 60
+                color: "#ffffff"
+                text: mainScreen.currentInd
                 font.pixelSize: 20
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter

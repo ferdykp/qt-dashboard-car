@@ -14,38 +14,40 @@ Window {
 
         // Properti yang mewakili data untuk antarmuka
         property int speedLeds: 90
-        property int rpmLeds : 90
-        property int tempLeds : 100
-        property int healthLeds : 100
-        // property int fuelLeds: 8
-        property int circleLeds : 100
         property int currentSpeed: 0
-        property int currentRpm: 0
-        // property int currentFuels: 0
-        property int currentCircle: 0
-        property int currentTemp : 0
-        property int currentHealth : 0
         property int maxSpeed: 180
+        property int rpmLeds : 90
+        property int currentRpm: 0
         property int maxRpm: 15
-        property int maxCircle: 100
+        property int tempLeds : 100
+        property int currentTemp : 0
         property int maxTemp : 100
+        property int healthLeds : 100
+        property int currentHealth : 0
         property int maxHealth : 100
+        property int circleLeds : 100
+        property int currentCircle: 0
+        property int maxCircle: 100
+        property int chargeLeds: 100
+        property int currentCharge: 0
+        property int maxCharge: 100
+        // property int fuelLeds: 8
+        // property int currentFuels: 0
         // property int maxFuels: 100
         property int batteryLevel: 90 // Level baterai default
         property string currentMode: "ECO"
+        property string currentInd: "P"
 
         buttonSwitch.onClicked: {
-            mainScreen.parking.color = "maroon"
-            mainScreen.reverse.color = "blue"
             mainScreen.rectLeft.color = "#6ffff9"
             mainScreen.rectLamp1.color = "lightblue"
             mainScreen.rectLamp2.color = "yellow"
             mainScreen.rectRight.color = "green"
             console.log("Changed Switch Button")
             mainScreen.changeMode();
+            mainScreen.changeIndicator();
         }
 
-        // Fungsi untuk mengubah mode
         function changeMode() {
             // Ganti mode secara berurutan
             if (currentMode === "Eco") {
@@ -58,20 +60,62 @@ Window {
             updateModeDisplay(currentMode); // Panggil fungsi untuk memperbarui tampilan mode
         }
 
-        // Fungsi untuk memperbarui tampilan berdasarkan mode
         function updateModeDisplay(mode) {
             // Mengupdate tampilan berdasarkan mode yang aktif
             if (mode === "Eco") {
-                mainScreen.rectMode.color = "#00FF00"; // Warna hijau untuk Eco
+                mainScreen.rectMode.border.color = "#00FF7F"; // Hijau neon untuk Eco
                 mainScreen.textEco.text = "ECO"; // Teks ECO
             } else if (mode === "Sport") {
-                mainScreen.rectMode.color = "#FF0000"; // Warna merah untuk Sport
+                mainScreen.rectMode.border.color = "#FF4500"; // Merah jingga terang untuk Sport
                 mainScreen.textEco.text = "SPORT"; // Teks SPORT
             } else if (mode === "Normal") {
-                mainScreen.rectMode.color = "#FFFF00"; // Warna kuning untuk Normal
+                mainScreen.rectMode.border.color = "#FFD700"; // Kuning emas terang untuk Normal
                 mainScreen.textEco.text = "NORMAL"; // Teks NORMAL
             }
         }
+
+        function changeIndicator() {
+            // Ganti mode secara berurutan
+            if (currentInd === "P") {
+                currentInd = "R"; // Ganti ke Mode Sport
+            } else if (currentInd === "R") {
+                currentInd = "N"; // Ganti ke Mode Normal
+            } else if (currentInd === "N"){
+                currentInd = "D"
+            } else {
+                currentInd = "P"; // Kembali ke Mode Eco
+            }
+            updateIndDisplay(currentInd); // Panggil fungsi untuk memperbarui tampilan mode
+        }
+
+        // Fungsi untuk memperbarui tampilan berdasarkan mode
+        function updateIndDisplay(ind) {
+            mainScreen.parking.color = "#313237"; // Warna default (tidak aktif)
+            mainScreen.reverse.color = "#313237";
+            mainScreen.netral.color = "#313237";
+            mainScreen.push.color = "#313237";
+            // Mengupdate tampilan berdasarkan mode yang aktif
+            if (ind === "P") {
+                mainScreen.rectIndicator.border.color = "#00FF7F"; // Hijau neon untuk Eco
+                mainScreen.textIndicator.text = "P"; // Teks ECO
+                mainScreen.parking.color = "#00FF7F"; // Hijau neon untuk Eco
+            } else if (ind === "R") {
+                mainScreen.rectIndicator.border.color = "#FF4500"; // Merah jingga terang untuk Sport
+                mainScreen.textIndicator.text = "R"; // Teks SPORT
+                mainScreen.reverse.color = "#FF4500"; // Merah jingga terang untuk Sport
+            } else if (ind === "N") {
+                mainScreen.rectIndicator.border.color = "#FFD700"; // Kuning emas terang untuk Normal
+                mainScreen.textIndicator.text = "N"; // Teks NORMAL
+                mainScreen.netral.color = "#FFD700"; // Kuning emas terang untuk Normal
+
+            } else if (ind === "D") {
+                mainScreen.rectIndicator.border.color = "#FFD700"; // Kuning emas terang untuk Normal
+                mainScreen.textIndicator.text = "D"; // Teks NORMAL
+                mainScreen.push.color = "#FFD700"; // Kuning emas terang untuk Normal
+            }
+        }
+
+
 
         function updateSpeed(newSpeed) {
         mainScreen.currentSpeed = newSpeed;
@@ -81,7 +125,7 @@ Window {
 
         function updateRpm(newRpm) {
         mainScreen.currentRpm = newRpm;
-        rpmText.text = newRpm + "\nGEAR";
+        rpmText.text = newRpm + "\nRPM";
         rpmArc.requestPaint();
          }
 
@@ -110,9 +154,16 @@ Window {
 
         function updateHealth(newHealth) {
             mainScreen.currentHealth = newHealth;
-            healthText.text = newHealth + "°C \nTemp";
+            healthText.text = newHealth + "%\nSoH";
             healthArc.requestPaint();
         }
+
+        function updateCharge(newCharge) {
+            mainScreen.currentCharge = newCharge;
+            chargeText.text = newCharge + "%\nSoC";
+            chargeArc.requestPaint();
+        }
+
 
 
     }
@@ -267,6 +318,31 @@ Window {
             }
         }
 
+    function chargeCanvas() {
+            let ctx = mainScreen.chargeArc.getContext("2d");
+            ctx.clearRect(0, 0, mainScreen.chargeArc.width, mainScreen.chargeArc.height);
+
+            let centerX = mainScreen.chargeArc.width / 2;
+            let centerY = mainScreen.chargeArc.height / 2;
+            let radius = 50;
+
+            let totalSegments = mainScreen.chargeLeds;
+            let activeSegments = Math.floor((mainScreen.currentCharge / mainScreen.maxCharge) * totalSegments);
+            let segmentAngle = (2 * Math.PI) / totalSegments;
+
+            for (let i = 0; i < totalSegments; i++) {
+                let startAngle = -Math.PI / 2 + i * segmentAngle;
+                let endAngle = startAngle + segmentAngle * 2;
+
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.strokeStyle = i < activeSegments ? "#44e6f8" : "#555555";
+                ctx.lineWidth = 5;
+                ctx.stroke();
+            }
+        }
+
+
 
 
     Timer {
@@ -324,12 +400,25 @@ Window {
         running: true
         repeat: true
         onTriggered: {
-                let newHealth = Math.floor(0.22 * mainScreen.maxHealth);
+                let newHealth = Math.floor(0.97 * mainScreen.maxHealth);
                 mainScreen.updateHealth(newHealth);
                 healthCanvas();
 
             }
         }
+
+    Timer {
+        interval: 1000
+        running: true
+        repeat: true
+        onTriggered: {
+                let newCharge = Math.floor(0.95 * mainScreen.maxCharge);
+                mainScreen.updateCharge(newCharge);
+                chargeCanvas();
+
+            }
+        }
+
 
 
     // Timer {
@@ -357,7 +446,7 @@ Window {
         running: true
         repeat: true
         onTriggered: {
-            mainScreen.timeText.text = Qt.formatTime(new Date(), "hh:mm:ss A");
+            mainScreen.timeText.text = Qt.formatTime(new Date(), "\thh:mm");
             mainScreen.dayText.text = Qt.formatDate(new Date(), "dddd |");
             mainScreen.dateText.text = Qt.formatDate(new Date(), "MMMM d, yyyy");
         }
