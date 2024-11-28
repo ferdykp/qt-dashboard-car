@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/QtQuick/Studio/MultiText">/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/qml/QtQuick/Studio/MultiText</file>
+
+  </qresource>
+</RCC>

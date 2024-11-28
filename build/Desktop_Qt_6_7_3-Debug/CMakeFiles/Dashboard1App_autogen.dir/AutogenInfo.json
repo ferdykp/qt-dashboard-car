@@ -1099,7 +1099,15 @@
 	"CROSS_CONFIG" : false,
 	"DEP_FILE" : "/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/Dashboard1App_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "Dashboard1App_autogen/timestamp",
-	"HEADERS" : [],
+	"HEADERS" : 
+	[
+		[
+			"/home/inno/project-qt/Dashboard1/src/dashboard.h",
+			"Mu",
+			"UVLADIE3JM/moc_dashboard.cpp",
+			null
+		]
+	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/Dashboard1App_autogen/include",
 	"MOC_COMPILATION_FILE" : "/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/Dashboard1App_autogen/mocs_compilation.cpp",
@@ -1192,6 +1200,7 @@
 	"SETTINGS_FILE" : "/home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/CMakeFiles/Dashboard1App_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/inno/project-qt/Dashboard1/src/dashboard.cpp", "Mu", null ],
 		[ "/home/inno/project-qt/Dashboard1/src/main.cpp", "Mu", null ]
 	],
 	"USE_BETTER_GRAPH" : false,

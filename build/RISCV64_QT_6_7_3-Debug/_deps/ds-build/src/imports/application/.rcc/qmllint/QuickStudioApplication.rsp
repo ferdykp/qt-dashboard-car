@@ -1,0 +1,9 @@
+--bare
+-I
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/qml
+-I
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/qml
+-I
+/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/lib/qml
+--resource
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/.qt/rcc/qmake_QtQuick_Studio_Application.qrc

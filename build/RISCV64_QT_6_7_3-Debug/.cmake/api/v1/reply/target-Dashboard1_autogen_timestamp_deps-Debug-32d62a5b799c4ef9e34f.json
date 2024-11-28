@@ -1,0 +1,38 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"imports/Dashboard1/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 0,
+			"id" : "Dashboard1_tooling::@65d8a3fbaa393c1acb00"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "QtInternalTargets"
+	},
+	"id" : "Dashboard1_autogen_timestamp_deps::@65d8a3fbaa393c1acb00",
+	"isGeneratorProvided" : true,
+	"name" : "Dashboard1_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "imports/Dashboard1",
+		"source" : "imports/Dashboard1"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

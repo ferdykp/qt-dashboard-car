@@ -1,0 +1,16 @@
+--bare
+-I
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug
+-I
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/qml
+-I
+/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/lib/qml
+--resource
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/.qt/rcc/configuration.qrc
+--resource
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/.qt/rcc/qmake_Main.qrc
+--resource
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/.qt/rcc/Dashboard1App_raw_qml_0.qrc
+/home/inno/project-qt/Dashboard1/main.qml
+--json
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/Dashboard1App_qmllint.json

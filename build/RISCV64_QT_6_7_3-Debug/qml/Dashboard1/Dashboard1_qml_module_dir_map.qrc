@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/Dashboard1">/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/qml/Dashboard1</file>
+
+  </qresource>
+</RCC>

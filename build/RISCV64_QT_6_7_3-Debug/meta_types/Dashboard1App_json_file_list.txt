@@ -1,0 +1,1 @@
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/Dashboard1App_autogen/include/../UVLADIE3JM/moc_dashboard.cpp.json

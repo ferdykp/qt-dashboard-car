@@ -9,10 +9,27 @@ Window {
     visible: true
     title: "Dashboard1"
 
+    property bool isX86_64: dash.isX86_64()
+
+        Rotation {
+            id: rotate
+            angle: 90
+            origin.x: 1280/2
+            origin.y: 800/2
+        }
+        Translate { id:translate; x:-240; y: 240; }
+
+
     Screen01 {
         id: mainScreen
 
+
+
+
+
+
         // Properti yang mewakili data untuk antarmuka
+        property bool isIncreasing: true // Menyimpan arah perubahan (naik atau turun)
         property int speedLeds: 90
         property int currentSpeed: 0
         property int maxSpeed: 180
@@ -31,12 +48,10 @@ Window {
         property int chargeLeds: 100
         property int currentCharge: 0
         property int maxCharge: 100
-        // property int fuelLeds: 8
-        // property int currentFuels: 0
-        // property int maxFuels: 100
-        property int batteryLevel: 90 // Level baterai default
+        property int batteryLevel: 90  // Level baterai default
         property string currentMode: "ECO"
         property string currentInd: "P"
+
 
         buttonSwitch.onClicked: {
             mainScreen.rectLeft.color = "#6ffff9"
@@ -47,6 +62,37 @@ Window {
             mainScreen.changeMode();
             mainScreen.changeIndicator();
         }
+
+        // buttonSwitch.onPressed: {
+        //     mainScreen.rectLeft.color = "#6ffff9"
+        //     mainScreen.rectLamp1.color = "lightblue"
+        //     mainScreen.rectLamp2.color = "yellow"
+        //     mainScreen.rectRight.color = "green"
+        //     console.log("Changed Switch Button touch")
+        //     mainScreen.changeMode();
+        //     mainScreen.changeIndicator();
+        // }
+
+        // Loader untuk memuat tampilan QML
+        Loader {
+            id: pageLoader
+            anchors.fill: parent
+        }
+
+        // Fungsi untuk memuat tampilan baru
+        function switchScreen() {
+            pageLoader.source = "qrc:/content/app/ScreenMap.qml";
+        }
+
+        switchScreenButton.onClicked: {
+            console.log("Menu ui ")
+            switchScreen();
+        }
+
+        // switchScreenButton.onPressed: {
+        //     console.log("Menu ui touch")
+        //     switchScreen();
+        // }
 
         function changeMode() {
             // Ganti mode secara berurutan
@@ -98,24 +144,26 @@ Window {
             if (ind === "P") {
                 mainScreen.rectIndicator.border.color = "#00FF7F"; // Hijau neon untuk Eco
                 mainScreen.textIndicator.text = "P"; // Teks ECO
+                mainScreen.textIndicator.color = "#00FF7F"; // Teks ECO
                 mainScreen.parking.color = "#00FF7F"; // Hijau neon untuk Eco
             } else if (ind === "R") {
                 mainScreen.rectIndicator.border.color = "#FF4500"; // Merah jingga terang untuk Sport
                 mainScreen.textIndicator.text = "R"; // Teks SPORT
+                mainScreen.textIndicator.color = "#FF4500"; // Teks ECO
                 mainScreen.reverse.color = "#FF4500"; // Merah jingga terang untuk Sport
             } else if (ind === "N") {
                 mainScreen.rectIndicator.border.color = "#FFD700"; // Kuning emas terang untuk Normal
                 mainScreen.textIndicator.text = "N"; // Teks NORMAL
+                mainScreen.textIndicator.color = "#FFD700"; // Teks ECO
                 mainScreen.netral.color = "#FFD700"; // Kuning emas terang untuk Normal
 
             } else if (ind === "D") {
                 mainScreen.rectIndicator.border.color = "#FFD700"; // Kuning emas terang untuk Normal
                 mainScreen.textIndicator.text = "D"; // Teks NORMAL
+                mainScreen.textIndicator.color = "#FFD700"; // Teks ECO
                 mainScreen.push.color = "#FFD700"; // Kuning emas terang untuk Normal
             }
         }
-
-
 
         function updateSpeed(newSpeed) {
         mainScreen.currentSpeed = newSpeed;
@@ -128,12 +176,6 @@ Window {
         rpmText.text = newRpm + "\nRPM";
         rpmArc.requestPaint();
          }
-
-
-        // function updateFuels(newFuels) {
-        // mainScreen.fuelText.text= newFuels.toString() + " %";
-        // mainScreen.currentFuels = newFuels;
-        // }
 
         function updateBatteryLevel(newLevel) {
             mainScreen.batteryText.text = newLevel + " %";
@@ -163,8 +205,6 @@ Window {
             chargeText.text = newCharge + "%\nSoC";
             chargeArc.requestPaint();
         }
-
-
 
     }
 
@@ -345,16 +385,46 @@ Window {
 
 
 
+    // Timer {
+    //     interval: 1000
+    //     running: true
+    //     repeat: true
+    //     onTriggered: {
+    //         let newSpeed = Math.floor(Math.random * mainScreen.maxSpeed);
+    //         mainScreen.updateSpeed(newSpeed);
+    //         speedCanvas();
+    //         }
+    //     }
+
+    // Timer untuk mengupdate kecepatan secara berurutan
     Timer {
-        interval: 1000
+        interval: 10 // Interval 1 detik
         running: true
         repeat: true
         onTriggered: {
-            let newSpeed = Math.floor(Math.random() * mainScreen.maxSpeed);
-            mainScreen.updateSpeed(newSpeed);
+                // Jika arah sedang naik (increment)
+                if (mainScreen.isIncreasing) {
+                    if (mainScreen.currentSpeed < 160) {
+                        mainScreen.currentSpeed += 1; // Naikkan nilai speed secara berurutan
+                    } else {
+                        mainScreen.isIncreasing = false; // Setelah mencapai 160, ganti arah ke turun
+                    }
+                }
+                // Jika arah sedang turun (decrement)
+                else {
+                    if (mainScreen.currentSpeed > 1) {
+                        mainScreen.currentSpeed -= 1; // Turunkan nilai speed secara berurutan
+                    } else {
+                        mainScreen.isIncreasing = true; // Setelah mencapai 1, ganti arah ke naik
+                    }
+                }
+            // Memperbarui nilai speed pada UI
+            mainScreen.updateSpeed(mainScreen.currentSpeed);
+
+            // Fungsi untuk memperbarui tampilan canvas atau tampilan terkait
             speedCanvas();
-            }
         }
+    }
 
     Timer {
         interval: 1000
@@ -419,24 +489,12 @@ Window {
             }
         }
 
-
-
-    // Timer {
-    //     interval: 1000
-    //     running: true
-    //     repeat: true
-    //     onTriggered: {
-    //             let newFuels = 80;
-    //             mainScreen.updateFuels(newFuels);
-    //             }
-    //     }
-
     Timer {
         interval: 1000
         running: true
         repeat: true
         onTriggered: {
-                let newLevel = Math.max(0, mainScreen.batteryLevel - Math.floor(Math.random() * 5));
+                let newLevel = Math.max(0, mainScreen.batteryLevel - Math.floor(0.5 * 5));
                 mainScreen.updateBatteryLevel(newLevel);
             }
         }
@@ -451,6 +509,12 @@ Window {
             mainScreen.dateText.text = Qt.formatDate(new Date(), "MMMM d, yyyy");
         }
     }
+
+    Component.onCompleted: {
+        if (!isX86_64)
+            mainScreen.transform = [ rotate,translate ]
+    }
+
 
 
     }

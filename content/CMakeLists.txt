@@ -7,7 +7,9 @@ qt6_add_qml_module(content
     VERSION 1.0
     QML_FILES
         app/App.qml
+        app/ScreenMap.qml
         ui/Screen01.ui.qml
+        ui/Screen02.ui.qml
     RESOURCES
         fonts/fonts.txt
         assets/menu.png
@@ -29,4 +31,9 @@ qt6_add_qml_module(content
         assets/linecar.png
         assets/dash180.png
         assets/rpm180.png
+        assets/framemaps.png
+        assets/marker.png
+        QML_FILES ui/Screen02.ui.qml
+        QML_FILES app/ScreenMap.qml
+        QML_FILES
 )

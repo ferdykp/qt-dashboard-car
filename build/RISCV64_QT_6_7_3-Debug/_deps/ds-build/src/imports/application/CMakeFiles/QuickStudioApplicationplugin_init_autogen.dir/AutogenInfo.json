@@ -1,0 +1,119 @@
+{
+	"BUILD_DIR" : "/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplicationplugin_init_autogen",
+	"CMAKE_BINARY_DIR" : "/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-src/src/imports/application",
+	"CMAKE_EXECUTABLE" : "/home/inno/Qt/Tools/CMake/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-src/src/imports/application/CMakeLists.txt",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/lib/cmake/Qt6Core/Qt6CoreResourceInit.in.cpp",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/lib/cmake/Qt6Qml/Qt6QmlPluginTemplate.cpp.in",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/lib/cmake/Qt6Qml/Qt6QmlModuleDirMappingTemplate.qrc.in",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in",
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplicationplugin_QtQuick_Studio_ApplicationPlugin_in.cpp"
+	],
+	"CMAKE_SOURCE_DIR" : "/home/inno/project-qt/Dashboard1",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplicationplugin_init_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "QuickStudioApplicationplugin_init_autogen/timestamp",
+	"HEADERS" : [],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplicationplugin_init_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplicationplugin_init_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"QT_CORE_LIB",
+		"QT_DEPRECATED_WARNINGS",
+		"QT_NETWORK_LIB",
+		"QT_PLUGIN",
+		"QT_QMLBUILTINS_LIB",
+		"QT_QMLINTEGRATION_LIB",
+		"QT_QML_LIB",
+		"QT_STATICPLUGIN"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application",
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-src/src/imports/application",
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplicationplugin_autogen/include",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/include/QtQml",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/include/QtQmlIntegration",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/include/QtQmlBuiltins",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/include/QtNetwork",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/include/QtCore",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/lib/mkspecs/linux-g++",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/include",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/include/c++/13.2.0",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/include/c++/13.2.0/riscv64-poky-linux",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/riscv64-poky-linux/usr/include/c++/13.2.0/backward",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/x86_64-pokysdk-linux/usr/lib/riscv64-poky-linux/gcc/riscv64-poky-linux/13.2.0/include",
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/x86_64-pokysdk-linux/usr/lib/riscv64-poky-linux/gcc/riscv64-poky-linux/13.2.0/include-fixed"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/home/inno/Qt/poky-riscv64-6.7.3/sysroots/x86_64-pokysdk-linux/usr/bin/riscv64-poky-linux/riscv64-poky-linux-g++",
+		"-dM",
+		"-E",
+		"-c",
+		"/home/inno/Qt/Tools/CMake/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplicationplugin_init_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : 
+	[
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/.qt/rcc/qrc_qmake_QtQuick_Studio_Application.cpp",
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/.qt/rcc/qrc_qmake_QtQuick_Studio_Application_init.cpp",
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplication_autogen/mocs_compilation.cpp",
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplicationplugin_autogen/mocs_compilation.cpp",
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/quickstudioapplication_qmltyperegistrations.cpp"
+	],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 8,
+	"PARSE_CACHE_FILE" : "/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/CMakeFiles/QuickStudioApplicationplugin_init_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/home/inno/Qt/6.7.3/gcc_64/libexec/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 7,
+	"SETTINGS_FILE" : "/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/CMakeFiles/QuickStudioApplicationplugin_init_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplicationplugin_init.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : 
+	[
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/.qt/rcc/qrc_qmake_QtQuick_Studio_Application.cpp",
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/.qt/rcc/qrc_qmake_QtQuick_Studio_Application_init.cpp",
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplication_autogen/mocs_compilation.cpp",
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/QuickStudioApplicationplugin_autogen/mocs_compilation.cpp",
+		"/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/application/quickstudioapplication_qmltyperegistrations.cpp"
+	],
+	"UIC_UI_FILES" : [],
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}

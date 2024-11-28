@@ -12,11 +12,12 @@ import QtQuick.Shapes 1.15
 import Dashboard1
 
 Rectangle {
-    id: rectangle
+    id: screen01
     width: Constants.width
     height: Constants.height
     color: "#1d1b1b"
 
+    property alias switchScreenButton: switchScreenButton
     property alias buttonSwitch: buttonSwitch
     property alias parking: parking
     property alias reverse: reverse
@@ -42,8 +43,6 @@ Rectangle {
     property alias chargeArc: chargeArc
     property alias rectIndicator: rectIndicator
     property alias textIndicator: textIndicator
-    // property alias fuelText: fuelText
-    // property alias ledRow: ledRow
     property alias batteryText: batteryText
     property alias timeText: timeText
     property alias dayText: dayText
@@ -87,34 +86,6 @@ Rectangle {
         height: 55
         color: "#302e2e"
         radius: 15
-    }
-
-    Text {
-        id: label
-        text: qsTr("Hello Dashboard")
-        font.family: Constants.font.family
-        anchors.topMargin: 45
-        anchors.horizontalCenter: parent.horizontalCenter
-
-        SequentialAnimation {
-            id: animation
-
-            ColorAnimation {
-                id: colorAnimation1
-                target: rectangle
-                property: "color"
-                to: "#2294c6"
-                from: Constants.backgroundColor
-            }
-
-            ColorAnimation {
-                id: colorAnimation2
-                target: rectangle
-                property: "color"
-                to: Constants.backgroundColor
-                from: "#2294c6"
-            }
-        }
     }
 
     Image {
@@ -439,81 +410,6 @@ Rectangle {
             }
         }
 
-        // Rectangle {
-        //     id: rectFuel
-        //     x: 52
-        //     y: 412
-        //     width: 325
-        //     height: 131
-        //     color: "#111010"
-        //     radius: 15
-        //     border.color: "#111010"
-        //     border.width: 2
-
-        //     Text {
-        //         id: fuelText
-        //         x: 248
-        //         y: -6
-        //         anchors.horizontalCenter: parent.horizontalCenter
-        //         anchors.top: parent.top
-        //         anchors.topMargin: 8
-        //         color: "#ffffff"
-        //         text: "0"
-        //         font.pixelSize: 40
-        //         anchors.horizontalCenterOffset: 91
-        //     }
-
-        //     Row {
-        //         id: ledRow
-        //         x: 37
-        //         y: 72
-        //         width: 291
-        //         height: 63
-        //         anchors.horizontalCenter: parent.horizontalCenter
-        //         // anchors.top: speedText.bottom
-        //         anchors.horizontalCenterOffset: 0
-        //         anchors.topMargin: 202
-        //         spacing: 5
-
-        //         Repeater {
-        //             model: rectangle.fuelLeds
-        //             Rectangle {
-        //                 width: 30
-        //                 height: 50
-        //                 radius: 5
-
-        //                 // color: Qt.rgba(1 - index / rectangle.numLeds, index / rectangle.numLeds, 0, 1)
-        //                 color: "#00BFFF"
-        //                 opacity: index < Math.floor(
-        //                              (rectangle.currentFuels / 100) * rectangle.fuelLeds) ? 1 : 0.3
-        //             }
-        //         }
-        //     }
-
-        //     Image {
-        //         id: fuel
-        //         x: 52
-        //         y: 11
-        //         source: "../assets/fuel.png"
-        //         fillMode: Image.PreserveAspectFit
-        //     }
-
-        //     Text {
-        //         id: text1
-        //         x: 117
-        //         y: 7
-        //         width: 112
-        //         height: 57
-        //         color: "#ffffff"
-        //         text: qsTr("Remaining Fuel")
-        //         elide: Text.ElideNone
-        //         font.pixelSize: 20
-        //         wrapMode: Text.WrapAnywhere
-        //         textFormat: Text.RichText
-        //         fontSizeMode: Text.Fit
-        //         styleColor: "#ffffff"
-        //     }
-        // }
         Rectangle {
             id: batteryIndicator
             x: 129
@@ -569,13 +465,14 @@ Rectangle {
 
             Text {
                 id: energyText
-                width: 144
+                width: 150
                 height: 51
                 anchors.centerIn: parent
                 color: "#FFFFFF"
                 // text: mainScreen.batteryLevel + " %"
                 text: "Battery Energy"
-                font.pixelSize: 20
+                font.pixelSize: 18
+                horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WrapAnywhere
                 anchors.verticalCenterOffset: 64
@@ -604,10 +501,10 @@ Rectangle {
                 Text {
                     id: timeText
                     color: "#FFFFFF"
+                    text: "03:48:00 PM"
                     font.pixelSize: 30
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter // Ukuran font lebih besar untuk waktu
-                    text: Qt.formatTime(new Date(), "hh:mm:ss A")
                 }
 
                 Row {
@@ -684,16 +581,16 @@ Rectangle {
         }
     }
 
-    states: [
-        State {
-            name: "clicked"
-
-            PropertyChanges {
-                target: label
-                text: qsTr("Button Checked")
-            }
-        }
-    ]
+    Button {
+        id: switchScreenButton
+        y: 734
+        text: "Go to Screen 02"
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: -492
+        anchors.bottomMargin: 26
+        // onClicked: mainScreen.switchScreen("Screen02") // Pindah ke Screen02
+    }
 }
 
 /*##^##

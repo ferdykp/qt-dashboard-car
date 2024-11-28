@@ -1,2 +1,26 @@
 [
+    {
+        "classes": [
+            {
+                "className": "Dashboard",
+                "object": true,
+                "qualifiedClassName": "Dashboard",
+                "slots": [
+                    {
+                        "access": "public",
+                        "name": "isX86_64",
+                        "returnType": "bool"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "dashboard.h",
+        "outputRevision": 68
+    }
 ]

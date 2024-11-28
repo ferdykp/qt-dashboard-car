@@ -1,0 +1,6 @@
+--resource
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/tools/eventsystem/.qt/rcc/qmake_QtQuick_Studio_EventSystem.qrc
+--resource
+/home/inno/project-qt/Dashboard1/build/RISCV64_QT_6_7_3-Debug/_deps/ds-build/src/imports/tools/eventsystem/.qt/rcc/QuickStudioEventSystem_raw_qml_0.qrc
+/QtQuick/Studio/EventSystem/EventSystem.qml
+/QtQuick/Studio/EventSystem/EventListener.qml
