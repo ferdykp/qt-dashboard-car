@@ -14,20 +14,34 @@ Screen02 {
         property int currentTemp : 0
         property int maxTemp : 100
         property int batteryLevel: 90 // Level baterai default
+        property int currScreenNumber: 2 // Layar awal adalah Screen01
+
 
 
     Loader {
         id: pageLoader
-        anchors.fill: parent
+        // anchors.fill: parent
+        width: 1280
+        height: 800
+        // source: "qrc:/content/app/App.qml" // Tampilan awal
+        // x: 0 // Posisi x untuk animasi
     }
 
-    function switchScreen() {
-            pageLoader.source = "qrc:/content/app/App.qml";
-        }
+    // // Fungsi untuk mengganti layar
+    // function switchScreen(screenNumber, text = "") {
+    //     currScreenNumber = screenNumber;
+    //     if (screenNumber === 1) {
+    //         pageLoader.source = "qrc:/content/app/App.qml";
+    //     } else if (screenNumber === 2) {
+    //         pageLoader.source = "qrc:/content/app/ScreenMap.qml";
+    //     } else {
+    //         console.log("Invalid screen number");
+    //     }
+    // }
 
     switchScreenButton.onClicked: {
-        console.log("Main Screen ")
-        switchScreen();
+        console.log("back")
+        switchScreen(1); // Pindah ke Screen02
     }
 
 
@@ -72,13 +86,13 @@ Screen02 {
         width: 500
         anchors.centerIn: parent
         // 80% dari lebar layar
-        height: parent.height * 0.8 // 80% dari tinggi layar
+        height: parent.height * 0.8
         border.color: "white"
         border.width: 2
         anchors.verticalCenterOffset: 54
         anchors.horizontalCenterOffset: 366
-        radius: 10 // Sudut melengkung
-        clip: true // Memastikan peta tidak melebihi Rectangle
+        radius: 10
+        clip: true
 
 
         Map {

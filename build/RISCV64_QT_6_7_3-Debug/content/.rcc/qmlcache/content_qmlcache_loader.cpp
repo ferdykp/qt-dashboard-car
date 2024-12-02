@@ -12,6 +12,13 @@ namespace _content_app_App_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
     };
 }
+namespace _content_app_ScreenMain_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
 namespace _content_app_ScreenMap_qml { 
     extern const unsigned char qmlData[];
     extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
@@ -48,6 +55,7 @@ Q_GLOBAL_STATIC(Registry, unitRegistry)
 
 Registry::Registry() {
     resourcePathToCachedUnit.insert(QStringLiteral("/content/app/App.qml"), &QmlCacheGeneratedCode::_content_app_App_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/content/app/ScreenMain.qml"), &QmlCacheGeneratedCode::_content_app_ScreenMain_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/content/app/ScreenMap.qml"), &QmlCacheGeneratedCode::_content_app_ScreenMap_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/content/ui/Screen01.ui.qml"), &QmlCacheGeneratedCode::_content_ui_Screen01_ui_0x2e_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/content/ui/Screen02.ui.qml"), &QmlCacheGeneratedCode::_content_ui_Screen02_ui_0x2e_qml::unit);

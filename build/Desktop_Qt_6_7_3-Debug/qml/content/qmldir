@@ -5,9 +5,8 @@ classname contentPlugin
 typeinfo content.qmltypes
 prefer :/content/
 App 1.0 app/App.qml
+ScreenMain 1.0 app/ScreenMain.qml
 ScreenMap 1.0 app/ScreenMap.qml
 Screen01 1.0 ui/Screen01.ui.qml
 Screen02 1.0 ui/Screen02.ui.qml
-Screen02 1.0 ui/Screen02.ui.qml
-ScreenMap 1.0 app/ScreenMap.qml
 

@@ -10,14 +10,13 @@ import QtQuick 6.5
 import QtQuick.Controls 6.5
 import QtQuick.Shapes 1.15
 import QtQuick.Layouts 1.15
-import QtMultimedia 5.15
 import Dashboard1
 
 Rectangle {
     id: screen02
     width: Constants.width
     height: Constants.height
-    color: "#1d1b1b"
+    color: "red"
 
     property alias rectLeft: rectLeft
     property alias rectLamp1: rectLamp1
@@ -75,36 +74,36 @@ Rectangle {
         x: 0
         y: 0
         width: 1280
+        height: 800
         source: "../assets/framemaps.png"
         fillMode: Image.PreserveAspectFit
 
-        Rectangle {
-            id: rectCam
-            width: 500
-            anchors.centerIn: parent
-            // 80% dari lebar layar
-            height: parent.height * 0.8 // 80% dari tinggi layar
-            border.color: "white"
-            border.width: 2
-            anchors.verticalCenterOffset: 54
-            anchors.horizontalCenterOffset: 366
-            radius: 10 // Sudut melengkung
+        // Rectangle {
+        //     id: rectCam
+        //     width: 500
+        //     anchors.centerIn: parent
+        //     // 80% dari lebar layar
+        //     height: parent.height * 0.8 // 80% dari tinggi layar
+        //     border.color: "white"
+        //     border.width: 2
+        //     anchors.verticalCenterOffset: 54
+        //     anchors.horizontalCenterOffset: -353
+        //     radius: 10 // Sudut melengkung
+        //     clip: true // Memastikan peta tidak melebihi Rectangle
+        // }
 
-        }
-
-        Rectangle {
-            id: mapContainer
-            width: 500
-            anchors.centerIn: parent
-            // 80% dari lebar layar
-            height: parent.height * 0.8 // 80% dari tinggi layar
-            border.color: "white"
-            border.width: 2
-            anchors.verticalCenterOffset: 54
-            anchors.horizontalCenterOffset: -353
-            radius: 10 // Sudut melengkung
-            clip: true // Memastikan peta tidak melebihi Rectangle
-        }
+        // Rectangle {
+        //     id: mapContainer
+        //     width: 500
+        //     height: parent.height * 0.8
+        //     border.color: "white"
+        //     border.width: 2
+        //     anchors.centerIn: parent
+        //     anchors.verticalCenterOffset: 54
+        //     anchors.horizontalCenterOffset: 366
+        //     radius: 10
+        //     clip: true
+        // }
 
         Rectangle {
             id: dateTimeContainer
@@ -209,7 +208,7 @@ Rectangle {
                 id: batteryLevel
                 width: Math.max(
                            0,
-                           batteryIndicator.width * mainScreen.batteryLevel / 100)
+                           batteryIndicator.width * batteryLevel / 100)
                 height: parent.height - 10
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
@@ -220,12 +219,12 @@ Rectangle {
                 gradient: Gradient {
                     GradientStop {
                         position: 0.0
-                        color: mainScreen.batteryLevel > 20 ? "#264653" // (jika > 20%)
+                        color: batteryLevel > 20 ? "#264653" // (jika > 20%)
                                                             : "#ea441d" // (jika <= 20%)
                     }
                     GradientStop {
                         position: 1.0
-                        color: mainScreen.batteryLevel > 20 ? "#3299c2" // Warna gelap transparan
+                        color: batteryLevel > 20 ? "#3299c2" // Warna gelap transparan
                                                             : "#170804" // Merah gelap transparan
                     }
                 }

@@ -10,10 +10,9 @@
 --resource
 /home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/content/.qt/rcc/content_raw_qml_0.qrc
 /home/inno/project-qt/Dashboard1/content/app/App.qml
+/home/inno/project-qt/Dashboard1/content/app/ScreenMain.qml
 /home/inno/project-qt/Dashboard1/content/app/ScreenMap.qml
 /home/inno/project-qt/Dashboard1/content/ui/Screen01.ui.qml
 /home/inno/project-qt/Dashboard1/content/ui/Screen02.ui.qml
-/home/inno/project-qt/Dashboard1/content/ui/Screen02.ui.qml
-/home/inno/project-qt/Dashboard1/content/app/ScreenMap.qml
 --json
 /home/inno/project-qt/Dashboard1/build/Desktop_Qt_6_7_3-Debug/content_qmllint.json

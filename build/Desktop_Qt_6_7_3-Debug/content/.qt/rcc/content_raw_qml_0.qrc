@@ -1,11 +1,10 @@
 <RCC>
   <qresource prefix="/content/">
     <file alias="app/App.qml">/home/inno/project-qt/Dashboard1/content/app/App.qml</file>
+    <file alias="app/ScreenMain.qml">/home/inno/project-qt/Dashboard1/content/app/ScreenMain.qml</file>
     <file alias="app/ScreenMap.qml">/home/inno/project-qt/Dashboard1/content/app/ScreenMap.qml</file>
     <file alias="ui/Screen01.ui.qml">/home/inno/project-qt/Dashboard1/content/ui/Screen01.ui.qml</file>
     <file alias="ui/Screen02.ui.qml">/home/inno/project-qt/Dashboard1/content/ui/Screen02.ui.qml</file>
-    <file alias="ui/Screen02.ui.qml">/home/inno/project-qt/Dashboard1/content/ui/Screen02.ui.qml</file>
-    <file alias="app/ScreenMap.qml">/home/inno/project-qt/Dashboard1/content/app/ScreenMap.qml</file>
     <file alias="fonts/fonts.txt">/home/inno/project-qt/Dashboard1/content/fonts/fonts.txt</file>
     <file alias="assets/menu.png">/home/inno/project-qt/Dashboard1/content/assets/menu.png</file>
     <file alias="assets/home.png">/home/inno/project-qt/Dashboard1/content/assets/home.png</file>

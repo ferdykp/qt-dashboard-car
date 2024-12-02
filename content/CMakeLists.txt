@@ -7,6 +7,7 @@ qt6_add_qml_module(content
     VERSION 1.0
     QML_FILES
         app/App.qml
+        app/ScreenMain.qml
         app/ScreenMap.qml
         ui/Screen01.ui.qml
         ui/Screen02.ui.qml
@@ -33,7 +34,8 @@ qt6_add_qml_module(content
         assets/rpm180.png
         assets/framemaps.png
         assets/marker.png
-        QML_FILES ui/Screen02.ui.qml
-        QML_FILES app/ScreenMap.qml
-        QML_FILES
+        # QML_FILES app/ScreenMain.qml
+        # QML_FILES ui/Screen02.ui.qml
+        # QML_FILES app/ScreenMap.qml
+        # QML_FILES
 )

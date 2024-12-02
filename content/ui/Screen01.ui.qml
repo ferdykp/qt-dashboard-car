@@ -41,8 +41,8 @@ Rectangle {
     property alias tempArc: tempArc
     property alias chargeText: chargeText
     property alias chargeArc: chargeArc
-    property alias rectIndicator: rectIndicator
-    property alias textIndicator: textIndicator
+    // property alias rectIndicator: rectIndicator
+    // property alias textIndicator: textIndicator
     property alias batteryText: batteryText
     property alias timeText: timeText
     property alias dayText: dayText
@@ -93,13 +93,15 @@ Rectangle {
         x: 0
         y: 0
         width: 1280
+        height: 800
         source: "../assets/framehole.png"
         fillMode: Image.PreserveAspectFit
 
         Button {
             id: buttonSwitch
-            x: 972
-            y: 727
+            x: 95
+            y: 587
+
             text: qsTr("Switch Mode")
         }
 
@@ -532,10 +534,10 @@ Rectangle {
 
         Rectangle {
             id: rectMode
-            x: 77
-            y: 333
-            width: 141
-            height: 134
+            x: 171
+            y: 344
+            width: 165
+            height: 159
             color: "#000000"
             radius: 68
             border.color: "#00FF7F"
@@ -543,8 +545,8 @@ Rectangle {
 
             Text {
                 id: textEco
-                x: 39
-                y: 43
+                x: 51
+                y: 56
                 width: 64
                 height: 48
                 color: "#ffffff"
@@ -554,48 +556,12 @@ Rectangle {
                 verticalAlignment: Text.AlignVCenter
             }
         }
-
-        Rectangle {
-            id: rectIndicator
-            x: 327
-            y: 365
-            width: 80
-            height: 80
-            color: "#000000"
-            radius: 10
-            border.color: "white"
-            border.width: 3
-
-            Text {
-                id: textIndicator
-                x: 10
-                y: 10
-                width: 60
-                height: 60
-                color: "#ffffff"
-                text: mainScreen.currentInd
-                font.pixelSize: 20
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
-        }
     }
 
     Button {
         id: switchScreenButton
-        y: 734
+        x: 96
+        y: 676
         text: "Go to Screen 02"
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.horizontalCenterOffset: -492
-        anchors.bottomMargin: 26
-        // onClicked: mainScreen.switchScreen("Screen02") // Pindah ke Screen02
     }
 }
-
-/*##^##
-Designer {
-    D{i:0}D{i:6;locked:true}
-}
-##^##*/
-
