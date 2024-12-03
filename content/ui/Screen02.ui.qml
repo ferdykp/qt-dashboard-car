@@ -78,32 +78,33 @@ Rectangle {
         source: "../assets/framemaps.png"
         fillMode: Image.PreserveAspectFit
 
-        // Rectangle {
-        //     id: rectCam
-        //     width: 500
-        //     anchors.centerIn: parent
-        //     // 80% dari lebar layar
-        //     height: parent.height * 0.8 // 80% dari tinggi layar
-        //     border.color: "white"
-        //     border.width: 2
-        //     anchors.verticalCenterOffset: 54
-        //     anchors.horizontalCenterOffset: -353
-        //     radius: 10 // Sudut melengkung
-        //     clip: true // Memastikan peta tidak melebihi Rectangle
-        // }
+        Rectangle {
+            id: mapContainer
+            width: 1200
+            height: 660
+            border.color: "white"
+            border.width: 2
+            anchors.centerIn: parent
+            anchors.verticalCenterOffset: 57
+            anchors.horizontalCenterOffset: 0
+            radius: 10
+            clip: true
+        }
 
-        // Rectangle {
-        //     id: mapContainer
-        //     width: 500
-        //     height: parent.height * 0.8
-        //     border.color: "white"
-        //     border.width: 2
-        //     anchors.centerIn: parent
-        //     anchors.verticalCenterOffset: 54
-        //     anchors.horizontalCenterOffset: 366
-        //     radius: 10
-        //     clip: true
-        // }
+        Rectangle {
+            id: rectCam
+            width: 400
+            height: 200
+            anchors.centerIn: parent
+            // 80% dari lebar layar
+            // 80% dari tinggi layar
+            border.color: "white"
+            border.width: 2
+            anchors.verticalCenterOffset: -169
+            anchors.horizontalCenterOffset: 0
+            radius: 10 // Sudut melengkung
+            clip: true // Memastikan peta tidak melebihi Rectangle
+        }
 
         Rectangle {
             id: dateTimeContainer
@@ -206,9 +207,7 @@ Rectangle {
             // Level baterai
             Rectangle {
                 id: batteryLevel
-                width: Math.max(
-                           0,
-                           batteryIndicator.width * batteryLevel / 100)
+                width: Math.max(0, batteryIndicator.width * batteryLevel / 100)
                 height: parent.height - 10
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
@@ -220,12 +219,12 @@ Rectangle {
                     GradientStop {
                         position: 0.0
                         color: batteryLevel > 20 ? "#264653" // (jika > 20%)
-                                                            : "#ea441d" // (jika <= 20%)
+                                                 : "#ea441d" // (jika <= 20%)
                     }
                     GradientStop {
                         position: 1.0
                         color: batteryLevel > 20 ? "#3299c2" // Warna gelap transparan
-                                                            : "#170804" // Merah gelap transparan
+                                                 : "#170804" // Merah gelap transparan
                     }
                 }
             }
@@ -248,12 +247,12 @@ Rectangle {
 
         Button {
             id: switchScreenButton
-            y: 740
+            y: 81
             text: "Go to Screen 02"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
-            anchors.horizontalCenterOffset: 0
-            anchors.bottomMargin: 20
+            anchors.horizontalCenterOffset: 341
+            anchors.bottomMargin: 679
         }
 
         // Container Rectangle untuk peta

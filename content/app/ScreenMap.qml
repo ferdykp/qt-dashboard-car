@@ -1,11 +1,12 @@
 // App.qml
-import QtQuick 6.5
+import QtQuick
 // import Dashboard1
 import "../ui"
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtLocation 5.15
-import QtPositioning 5.15
+import QtQuick
+import QtQuick.Controls
+import QtLocation
+import QtPositioning
+import QtMultimedia
 
 
 Screen02 {
@@ -16,28 +17,6 @@ Screen02 {
         property int batteryLevel: 90 // Level baterai default
         property int currScreenNumber: 2 // Layar awal adalah Screen01
 
-
-
-    Loader {
-        id: pageLoader
-        // anchors.fill: parent
-        width: 1280
-        height: 800
-        // source: "qrc:/content/app/App.qml" // Tampilan awal
-        // x: 0 // Posisi x untuk animasi
-    }
-
-    // // Fungsi untuk mengganti layar
-    // function switchScreen(screenNumber, text = "") {
-    //     currScreenNumber = screenNumber;
-    //     if (screenNumber === 1) {
-    //         pageLoader.source = "qrc:/content/app/App.qml";
-    //     } else if (screenNumber === 2) {
-    //         pageLoader.source = "qrc:/content/app/ScreenMap.qml";
-    //     } else {
-    //         console.log("Invalid screen number");
-    //     }
-    // }
 
     switchScreenButton.onClicked: {
         console.log("back")
@@ -83,14 +62,13 @@ Screen02 {
 
     Rectangle {
         id: mapContainer
-        width: 500
-        anchors.centerIn: parent
-        // 80% dari lebar layar
-        height: parent.height * 0.8
+        width: 1200
+        height: 660
         border.color: "white"
         border.width: 2
-        anchors.verticalCenterOffset: 54
-        anchors.horizontalCenterOffset: 366
+        anchors.centerIn: parent
+        anchors.verticalCenterOffset: 57
+        anchors.horizontalCenterOffset: 0
         radius: 10
         clip: true
 
@@ -168,6 +146,46 @@ Screen02 {
         }
     }
 
+    Rectangle {
+        id: cameraContainer
+        width: 400
+        height: 220
+        anchors.centerIn: parent
+        anchors.verticalCenterOffset: -160
+        anchors.horizontalCenterOffset: 0
+        border.color: "white"
+        border.width: 2
+        radius: 10 // Sudut melengkung
+        clip: true // Membatasi tampilan video pada Rectangle
+        color: "black" // Warna latar belakang jika kamera belum aktif
+
+        // VideoOutput untuk menampilkan kamera
+        VideoOutput {
+            id: videoOutput
+            anchors.fill: parent // Mengisi seluruh Rectangle
+            visible: camera.status === Camera.ActiveStatus // Tampil hanya jika kamera aktif
+            fillMode: VideoOutput.Stretch // Memaksa video mengisi penuh Rectangle
+        }
+
+        // CaptureSession untuk streaming kamera
+        CaptureSession {
+            id: captureSession
+            camera: camera
+            videoOutput: videoOutput
+
+        }
+
+        // Kamera
+        Camera {
+            id: camera
+            onErrorOccurred: console.error("Camera error:", errorString)
+
+            Component.onCompleted: {
+                console.log("Starting camera automatically...");
+                start(); // Memulai kamera otomatis
+            }
+        }
+    }
 
     Timer {
         interval: 1000

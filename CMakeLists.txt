@@ -11,6 +11,7 @@ set(CMAKE_AUTOMOC ON)
 find_package(QT NAMES Qt6 COMPONENTS Gui Qml Quick)
 find_package(Qt6 REQUIRED COMPONENTS Core Qml Quick)
 
+
 # To build this application you need Qt 6.2.0 or higher
 if (Qt6_VERSION VERSION_LESS 6.2.0)
 message(FATAL_ERROR "You need Qt 6.2.0 or newer to build the application.")

@@ -12,3 +12,4 @@ bool Dashboard::isX86_64(void)
         return 0;
 #endif
 }
+

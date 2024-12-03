@@ -41,8 +41,6 @@ Rectangle {
     property alias tempArc: tempArc
     property alias chargeText: chargeText
     property alias chargeArc: chargeArc
-    // property alias rectIndicator: rectIndicator
-    // property alias textIndicator: textIndicator
     property alias batteryText: batteryText
     property alias timeText: timeText
     property alias dayText: dayText
