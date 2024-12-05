@@ -30,6 +30,8 @@ Rectangle {
     property alias timeText: timeText
     property alias dayText: dayText
     property alias dateText: dateText
+    property alias mapContainer: mapContainer
+    property alias rectCam: rectCam
 
     Rectangle {
         id: rectLamp2
@@ -91,19 +93,19 @@ Rectangle {
             clip: true
         }
 
+
         Rectangle {
             id: rectCam
             width: 400
-            height: 200
+            height: 220
             anchors.centerIn: parent
-            // 80% dari lebar layar
-            // 80% dari tinggi layar
+            anchors.verticalCenterOffset: -160
+            anchors.horizontalCenterOffset: 0
             border.color: "white"
             border.width: 2
-            anchors.verticalCenterOffset: -169
-            anchors.horizontalCenterOffset: 0
             radius: 10 // Sudut melengkung
-            clip: true // Memastikan peta tidak melebihi Rectangle
+            clip: true // Membatasi tampilan video pada Rectangle
+            color: "black" // Warna latar belakang jika kamera belum aktif
         }
 
         Rectangle {
@@ -251,10 +253,8 @@ Rectangle {
             text: "Go to Screen 02"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
-            anchors.horizontalCenterOffset: 341
+            anchors.horizontalCenterOffset: 535
             anchors.bottomMargin: 679
         }
-
-        // Container Rectangle untuk peta
     }
 }

@@ -3,6 +3,7 @@
     <file alias="app/App.qml">/home/inno/project-qt/Dashboard1/content/app/App.qml</file>
     <file alias="app/ScreenMain.qml">/home/inno/project-qt/Dashboard1/content/app/ScreenMain.qml</file>
     <file alias="app/ScreenMap.qml">/home/inno/project-qt/Dashboard1/content/app/ScreenMap.qml</file>
+    <file alias="app/openstreetmap.json">/home/inno/project-qt/Dashboard1/content/app/openstreetmap.json</file>
     <file alias="ui/Screen01.ui.qml">/home/inno/project-qt/Dashboard1/content/ui/Screen01.ui.qml</file>
     <file alias="ui/Screen02.ui.qml">/home/inno/project-qt/Dashboard1/content/ui/Screen02.ui.qml</file>
     <file alias="fonts/fonts.txt">/home/inno/project-qt/Dashboard1/content/fonts/fonts.txt</file>
@@ -27,6 +28,7 @@
     <file alias="assets/rpm180.png">/home/inno/project-qt/Dashboard1/content/assets/rpm180.png</file>
     <file alias="assets/framemaps.png">/home/inno/project-qt/Dashboard1/content/assets/framemaps.png</file>
     <file alias="assets/marker.png">/home/inno/project-qt/Dashboard1/content/assets/marker.png</file>
+    <file alias="assets/car.obj">/home/inno/project-qt/Dashboard1/content/assets/car.obj</file>
   </qresource>
 </RCC>
 

@@ -9,6 +9,7 @@ qt6_add_qml_module(content
         app/App.qml
         app/ScreenMain.qml
         app/ScreenMap.qml
+        app/openstreetmap.json
         ui/Screen01.ui.qml
         ui/Screen02.ui.qml
     RESOURCES
@@ -34,6 +35,8 @@ qt6_add_qml_module(content
         assets/rpm180.png
         assets/framemaps.png
         assets/marker.png
+        assets/car.obj
+        # QML_FILES app/openstreetmap.json
         # QML_FILES app/ScreenMain.qml
         # QML_FILES ui/Screen02.ui.qml
         # QML_FILES app/ScreenMap.qml

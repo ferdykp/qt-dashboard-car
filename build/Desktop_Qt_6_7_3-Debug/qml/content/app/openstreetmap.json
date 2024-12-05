@@ -1,0 +1,103 @@
+{
+  "bbox": [
+    49.414558,
+    8.68068,
+    49.420635,
+    8.687299
+  ],
+  "routes": [
+    {
+      "summary": {
+        "distance": 1206.7,
+        "duration": 289.6
+      },
+      "segments": [
+        {
+          "distance": 1206.7,
+          "duration": 289.6,
+          "steps": [
+            {
+              "distance": 343,
+              "duration": 82.3,
+              "type": 11,
+              "instruction": "Head east",
+              "name": "-",
+              "way_points": [
+                0,
+                9
+              ]
+            },
+            {
+              "distance": 637,
+              "duration": 152.9,
+              "type": 0,
+              "instruction": "Turn left",
+              "name": "-",
+              "way_points": [
+                9,
+                12
+              ]
+            },
+            {
+              "distance": 226.7,
+              "duration": 54.4,
+              "type": 0,
+              "instruction": "Turn left",
+              "name": "-",
+              "way_points": [
+                12,
+                18
+              ]
+            },
+            {
+              "distance": 0,
+              "duration": 0,
+              "type": 10,
+              "instruction": "Arrive at your destination, on the right",
+              "name": "-",
+              "way_points": [
+                18,
+                18
+              ]
+            }
+          ]
+        }
+      ],
+      "bbox": [
+        49.414558,
+        8.68068,
+        49.420635,
+        8.687299
+      ],
+      "geometry": "}n~s@_hrlHBw@^mAPy@_@{AW_BDi@Ho@?aAKcAgVuMq@_@sDkBu@\\e@n@Wx@aAv@cB`AOF",
+      "way_points": [
+        0,
+        18
+      ]
+    }
+  ],
+  "metadata": {
+    "attribution": "openrouteservice.org | OpenStreetMap contributors",
+    "service": "routing",
+    "timestamp": 1733216267889,
+    "query": {
+      "coordinates": [
+        [
+          49.41461,
+          8.681495
+        ],
+        [
+          49.420318,
+          8.687872
+        ]
+      ],
+      "profile": "driving-car",
+      "format": "json"
+    },
+    "engine": {
+      "version": "8.2.0",
+      "build_date": "2024-10-09T09:23:42Z",
+      "graph_date": "2024-09-23T14:39:49Z"
+    }
+  }
+}

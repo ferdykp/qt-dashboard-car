@@ -1,6 +1,6 @@
 // App.qml
 import QtQuick 6.5
-import Dashboard1
+// import Dashboard1
 import "../ui"
 
 Screen01 {
